@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import styled from 'styled-components'
 import HomeCarousel from '../HomeCarousel/HomeCarousel'
 
 // note tạm
 // import LogoNinja from './../../assets/pictures/LogoNinja.png'
-{/* <img src={LogoNinja} alt="." className=" w-20 " /> */}
+{/* <img src={LogoNinja} alt="." className=" w-20 " /> */ }
 
 
 
@@ -14,21 +16,26 @@ export default class Header extends Component {
                 <div className="container flex justify-between h-16 mx-auto">
 
                     <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
-                       <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
+                        <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
                     </a>
                     <ul className="items-stretch hidden space-x-3 lg:flex">
+                        <NavActive className="flex">
+                            {/* <NavLink rel="noopener noreferrer" to="/home" className="flex items-center px-4 -mb-1  border-transparent text-white" >Home</NavLink> */}
+                            <NavLink rel="noopener noreferrer" to="/home" className={({ isActive }) =>
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                            } >Home</NavLink>
+                        </NavActive>
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-white border-white">Link</a>
+                            <NavLink rel="noopener noreferrer" to="/contact" className={({ isActive }) =>
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                            } >Contact</NavLink>
                         </li>
                         <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-white">Link</a>
+                            <NavLink rel="noopener noreferrer" to="/news" className={({ isActive }) =>
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                            } >News</NavLink>
                         </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-white">Link</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#" className="flex items-center px-4 -mb-1 border-b-2 border-transparent text-white">Link</a>
-                        </li>
+
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex">
                         <button className="self-center px-8 py-3 rounded">Sign in</button>
@@ -40,9 +47,17 @@ export default class Header extends Component {
                         </svg>
                     </button>
                 </div>
-                
+
             </header>
-            
+
         )
     }
 }
+
+
+const NavActive = styled.div`
+    &.active{
+        border: 1px solid red;
+
+    }
+`
