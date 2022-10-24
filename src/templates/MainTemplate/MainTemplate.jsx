@@ -10,7 +10,6 @@ export default class MainTemplate extends Component{
         return (
             <div>
                 <Header></Header>
-                <HomeCarousel></HomeCarousel>
                 <Outlet></Outlet>
                 <Footer></Footer>
             </div>

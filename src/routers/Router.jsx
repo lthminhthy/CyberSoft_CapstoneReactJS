@@ -1,5 +1,7 @@
 import { Navigate, useRoutes } from "react-router-dom"
+import Contact from "../pages/Contact/Contact"
 import Home from "../pages/Home/Home"
+import News from "../pages/News/News"
 import  MainTemplate from "../templates/MainTemplate/MainTemplate"
 
 export const Router = () => {
@@ -15,7 +17,15 @@ export const Router = () => {
                 {
                     path:'home',
                     element: <Home></Home>
-                }
+                },
+                {
+                    path:'contact',
+                    element: <Contact></Contact>
+                },
+                {
+                    path:'news',
+                    element: <News></News>
+                },
             ]
         },
         // {
