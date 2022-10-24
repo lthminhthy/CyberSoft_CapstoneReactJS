@@ -12,11 +12,11 @@ import HomeCarousel from '../HomeCarousel/HomeCarousel'
 export default class Header extends Component {
     render() {
         return (
-            <header className="mx-auto p-4 bg-darkHeader text-white bg-opacity-40 fixed w-full z-10">
+            <header className="mx-auto p-4 bg-darkHeader text-white bg-opacity-60 fixed w-full z-10">
                 <div className="container flex justify-between h-16 mx-auto">
 
                     <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
-                        <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
+                        <img className='w-2/4 sm:w-4/5 md:w-full ' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
                     </a>
                     <ul className="items-stretch hidden space-x-3 lg:flex">
                         <NavActive className="flex">
@@ -39,7 +39,7 @@ export default class Header extends Component {
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex">
                         <button className="self-center px-8 py-3 rounded">Sign in</button>
-                        <button className="self-center px-8 py-3 font-semibold rounded bg-violet-400 text-gray-900">Sign up</button>
+                        <button className="self-center px-8 py-3 font-semibold rounded bg-yellow-400 text-gray-900">Sign up</button>
                     </div>
                     <button className="p-4 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-100">
