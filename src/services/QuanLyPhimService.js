@@ -12,7 +12,7 @@ export class QuanLyPhimService extends baseService{
     }
 
     layDanhSachPhim = () => {
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP03')
+        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP07')
 
     }
 }

@@ -21,25 +21,25 @@ export default class Header extends Component {
                     <ul className="items-stretch hidden space-x-3 lg:flex">
                         <NavActive className="flex">
                             {/* <NavLink rel="noopener noreferrer" to="/home" className="flex items-center px-4 -mb-1  border-transparent text-white" >Home</NavLink> */}
-                            <NavLink rel="noopener noreferrer" to="/home" className={({ isActive }) =>
-                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                            <NavLink rel="noopener noreferrer" to="/home" className= {({ isActive }) =>
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300 hover:text-yellow-500' : 'flex items-center px-4 -mb-1  border-transparent text-white hover:text-yellow-500'
                             } >Home</NavLink>
                         </NavActive>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to="/contact" className={({ isActive }) =>
-                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300 hover:text-yellow-500' : 'flex items-center px-4 -mb-1  border-transparent text-white hover:text-yellow-500'
                             } >Contact</NavLink>
                         </li>
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to="/news" className={({ isActive }) =>
-                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300' : 'flex items-center px-4 -mb-1  border-transparent text-white'
+                                isActive ? 'flex items-center px-4 -mb-1  border-transparent text-white border-b-2 border-gray-300 hover:text-yellow-500' : 'flex items-center px-4 -mb-1  border-transparent text-white hover:text-yellow-500'
                             } >News</NavLink>
                         </li>
 
                     </ul>
                     <div className="items-center flex-shrink-0 hidden lg:flex">
-                        <button className="self-center px-8 py-3 rounded">Sign in</button>
-                        <button className="self-center px-8 py-3 font-semibold rounded bg-yellow-400 text-gray-900">Sign up</button>
+                        <button className="self-center px-8 py-3 rounded hover:text-yellow-500">Sign in</button>
+                        <button className="self-center px-8 py-3 font-semibold rounded bg-yellow-400 text-gray-900 hover:text-white">Sign up</button>
                     </div>
                     <button className="p-4 lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-100">
