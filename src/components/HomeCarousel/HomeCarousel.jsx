@@ -9,7 +9,7 @@ import './HomeCarousel.css'
 const HomeCarousel = () => {
     const contentStyle = {
         maxWidth: '100%',
-        height: '600px',
+        height: '100%',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',
@@ -43,13 +43,12 @@ const HomeCarousel = () => {
     
 
     return (
-        <div>
-            <Carousel autoplay style={{}}>
+        
+            <Carousel autoplay className='lg:h-max md:h-max'>
                {renderCarousel()}
                 
 
             </Carousel>
-        </div>
     )
 }
 
