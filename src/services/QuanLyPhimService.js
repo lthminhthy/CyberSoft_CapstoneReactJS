@@ -1,4 +1,5 @@
 import { baseService } from "./baseService";
+import { GROUPID } from "../util/settings/config";
 
 
 export class QuanLyPhimService extends baseService{
@@ -12,7 +13,7 @@ export class QuanLyPhimService extends baseService{
     }
 
     layDanhSachPhim = () => {
-        return this.get('/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP07')
+        return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`)
 
     }
 }
