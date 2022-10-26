@@ -7,3 +7,16 @@
     width: 100% !important;
 }
 
+.slick-slider .slick-track, .slick-slider .slick-list {
+    transform: translate3d(0, 0, 0);
+    width: inherit !important;
+}
+
+.active_Film{
+  @apply text-black;
+}
+
+.non-active_Film{
+      @apply text-yellow-300;
+    
+}

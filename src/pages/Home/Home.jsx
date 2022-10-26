@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import HomeCarousel from '../../components/HomeCarousel/HomeCarousel'
 import MultipleRow from '../../components/RSlick/MultipleRow'
 import { layDanhSachPhimAction } from '../../redux/actions/QuanLyPhimAction'
+import { layDanhSachHeThongRapAction } from '../../redux/actions/QuanLyRapAction'
 
 import HomeMenu from './HomeMenu/HomeMenu'
 
@@ -11,12 +12,14 @@ import HomeMenu from './HomeMenu/HomeMenu'
 
 const Home = () => {
   const { arrPhim } = useSelector(state => state.QuanLyPhimReducer);
+  const {heThongRap} = useSelector(state => state.QuanLyRapReducer)
   console.log("arrPhim: ", arrPhim);
   const dispatch = useDispatch()
 
   useEffect(() => {
     const action = layDanhSachPhimAction()
     dispatch(action)
+    dispatch(layDanhSachHeThongRapAction())
   }, [])
 
 
@@ -29,8 +32,9 @@ const Home = () => {
          {arrPhim.length > 0 && <MultipleRow arrPhim={arrPhim}></MultipleRow>}
         </div>
       </section>
-      <div className='mx-36'>
-        <HomeMenu></HomeMenu>
+      <div className='lg:mx-36 lg:my-16'>
+        <HomeMenu heThongRap={heThongRap}></HomeMenu>
+
       </div>
     </div>
   )
