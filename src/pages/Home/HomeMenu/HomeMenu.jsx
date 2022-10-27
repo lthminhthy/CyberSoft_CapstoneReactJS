@@ -35,7 +35,7 @@ export default function HomeMenu(props) {
             return <TabPane tab={
               <div style={{  display: 'flex' }}>
                 <img src={heThongRapChieu.logo} width={40} />
-                <div className='text-left ml-2	'>{cumRap.tenCumRap}
+                <div className='text-left ml-2 text-black 	'>{cumRap.tenCumRap}
                   <p className='text-xs text-yellow-500'>{cumRap.diaChi}</p>
                 </div>
 

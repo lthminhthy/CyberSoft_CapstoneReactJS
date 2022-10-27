@@ -1,1 +1,2 @@
 export const SET_HETHONGRAP = 'SET_HETHONGRAP';
+export const SET_FILM_DETAIL = 'SET_FILM_DETAIL';
