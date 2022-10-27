@@ -5,8 +5,10 @@ import Detail from "../pages/Detail/Detail"
 import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
 import News from "../pages/News/News"
+import Register from "../pages/Register/Register"
 import CheckoutTemplate from "../templates/CheckoutTemplate/CheckoutTemplate"
 import  MainTemplate from "../templates/MainTemplate/MainTemplate"
+import UserTemplate from "../templates/UserTemplate/UserTemplate"
 
 
 
@@ -50,8 +52,19 @@ export const Router = () => {
             ]
         },
         {
-            path:'/login',
-            element: <Login></Login>
+            path:'/',
+            element: <UserTemplate></UserTemplate>,
+            children: [
+                {
+                    path:'login',
+                    element: <Login></Login>
+                },
+                {
+                    path:'register',
+                    element: <Register></Register>
+                }
+
+            ]
             
         }
         // {
