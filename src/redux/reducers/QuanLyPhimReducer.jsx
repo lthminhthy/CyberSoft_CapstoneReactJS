@@ -7,6 +7,7 @@ const stateDefault = {
     arrPhimDefault: [],
     dangChieu: true ,
     sapChieu: true,
+    
 }
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {

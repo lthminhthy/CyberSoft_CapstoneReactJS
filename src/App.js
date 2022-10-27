@@ -2,15 +2,22 @@
 // import './App.css';
 
 
+import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import FallBackFazy from './assets/FallBackLazy/FallBackFazy';
 import Router from "./routers/Router"
 
+
+const RouterLazy = React.lazy(() => import('./routers/Router'))
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Router></Router>
+      <Suspense fallback={<FallBackFazy></FallBackFazy>} >
+        <RouterLazy></RouterLazy>
+      </Suspense>
+
     </BrowserRouter>
 
   );

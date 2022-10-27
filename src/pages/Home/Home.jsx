@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import FallBackFazy from '../../assets/FallBackLazy/FallBackFazy'
 import HomeCarousel from '../../components/HomeCarousel/HomeCarousel'
 import MultipleRow from '../../components/RSlick/MultipleRow'
 import { layDanhSachPhimAction } from '../../redux/actions/QuanLyPhimAction'
@@ -34,6 +35,7 @@ const Home = () => {
       </section>
       <div className='lg:mx-36 lg:my-16'>
         <HomeMenu heThongRap={heThongRap}></HomeMenu>
+        
 
       </div>
     </div>

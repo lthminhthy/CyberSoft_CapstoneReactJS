@@ -6,7 +6,7 @@ const Footer = (props) => {
 
   const {heThongRapChieu} = useSelector(state => state.QuanLyRapReducer)
 
-  // 
+   
   const arrHeThongRap = _.map(heThongRapChieu, (heThongRap) => _.pick(heThongRap,['maHeThongRap','tenHeThongRap','logo']))
   console.log("arrHeThongRap: ", arrHeThongRap);
   return (
