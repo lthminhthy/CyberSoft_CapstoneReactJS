@@ -15,9 +15,9 @@ const Header = () => {
         <header className="mx-auto p-4 bg-darkHeader text-white bg-opacity-60 fixed w-full z-10">
             <div className="container flex justify-between h-16 mx-auto">
 
-                <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
+                <NavLink rel="noopener noreferrer" to="/home"  className="flex items-center p-2">
                     <img className='w-2/4 sm:w-4/5 md:w-full ' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
-                </a>
+                </NavLink>
                 <ul className="items-stretch hidden space-x-3 lg:flex">
                     <NavActive className="flex">
                         {/* <NavLink rel="noopener noreferrer" to="/home" className="flex items-center px-4 -mb-1  border-transparent text-white" >Home</NavLink> */}

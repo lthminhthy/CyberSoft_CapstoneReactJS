@@ -1,5 +1,5 @@
 import { values } from "lodash"
-import { TOKEN, USER_LOGIN } from "../../util/settings/config";
+import { ACCESS_TOKEN, TOKEN, USER_LOGIN } from "../../util/settings/config";
 import { SET_DANGNHAP } from "../actions/types/QuanLyNguoiDungType"
 
 
@@ -20,7 +20,7 @@ export const QuanLyNguoiDungReducer = (state = stateDefault,action) =>  {
         case SET_DANGNHAP: {
             const {thongTinDangNhap} = action;
             localStorage.setItem(USER_LOGIN, JSON.stringify(thongTinDangNhap));
-            localStorage.setItem(TOKEN, thongTinDangNhap.accessToken)
+            localStorage.setItem(ACCESS_TOKEN, thongTinDangNhap.accessToken)
 
             return {...state, userLogin: thongTinDangNhap}
         }

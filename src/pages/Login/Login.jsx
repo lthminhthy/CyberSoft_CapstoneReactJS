@@ -1,11 +1,12 @@
 import React from 'react'
 import { useFormik } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { dangNhapAction } from '../../redux/actions/QuanLyNguoiDungAction';
 
 
 const Login = () => {
+  const navigate =useNavigate()
   const dispatch = useDispatch()
   const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer)
   console.log("userLogin: ", userLogin);
@@ -17,7 +18,7 @@ const Login = () => {
       matKhau: '',
     },
     onSubmit: value => {
-      const action = dangNhapAction(value);
+      const action = dangNhapAction(value ,navigate);
       dispatch(action)
       console.log("value: ", value);
       // alert(JSON.stringify(value, null,2));
@@ -27,12 +28,12 @@ const Login = () => {
 
   return (
     <form className="lg:w-1/2 xl:max-w-screen-sm" onSubmit={formik.handleSubmit} >
-      <div className="py-12 bg-yellow-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+      <div className="py-12 bg-white  flex justify-center lg:justify-start lg:px-12">
         <div className="cursor-pointer flex items-center">
           <div>
           <img className='w-2/4 sm:w-4/5 md:w-full ' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
           </div>
-          <div className="text-2xl text-yellow-500 tracking-wide ml-2 font-semibold">CYBER BOOKING</div>
+          {/* <div className="text-2xl text-yellow-500 tracking-wide ml-2 font-semibold">CYBER BOOKING</div> */}
         </div>
       </div>
       <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">

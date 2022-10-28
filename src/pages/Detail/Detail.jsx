@@ -89,7 +89,7 @@ const Detail = (props) => {
                                                                     </div>
                                                                     <div className='grid grid-cols-8 gap-10 mb-3'>
                                                                         {cumRap.lichChieuPhim?.slice(0, 10).map((lichChieu, index) => {
-                                                                            return <NavLink to='/' key={index} className=' bg-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md text-black font-semibold'>
+                                                                            return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className=' bg-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md text-black font-semibold'>
                                                                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                                                                             </NavLink>
                                                                         })}
