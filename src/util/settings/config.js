@@ -3,4 +3,6 @@ export const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y
 export const GROUPID = 'GP03'
 
 export const USER_LOGIN = 'USER_LOGIN'
+export const ACCESS_TOKEN = 'ACCESS_TOKEN'
+
 

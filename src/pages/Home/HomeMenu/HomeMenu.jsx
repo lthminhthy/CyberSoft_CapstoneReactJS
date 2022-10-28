@@ -55,7 +55,7 @@ export default function HomeMenu(props) {
                         <h1 className='text-xl font-semibold'>{phim.tenPhim}</h1>
                         <div className='grid grid-cols-5 gap-6 '>
                           {phim.lstLichChieuTheoPhim?.slice(1,4).map((lichChieu, index) => {
-                            return <NavLink className="bg-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md text-black font-semibold" to='/' key={index}>
+                            return <NavLink className="bg-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md text-black font-semibold" to={`/checkout/${lichChieu.maLichChieu}`} key={index}>
                               {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                             </NavLink>
                           })}

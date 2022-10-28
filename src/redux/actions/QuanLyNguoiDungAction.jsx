@@ -1,7 +1,9 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import { SET_DANGNHAP } from "./types/QuanLyNguoiDungType";
 
-export const dangNhapAction = (thongTinDangNhap) => {
+
+
+export const dangNhapAction = (thongTinDangNhap ,navigate) => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.dangNhap(thongTinDangNhap)
@@ -11,12 +13,19 @@ export const dangNhapAction = (thongTinDangNhap) => {
                     type: SET_DANGNHAP,
                     thongTinDangNhap: result.data.content
                 })
+                navigate(-1)
+
+               
             }
+
 
             console.log("result: ", result);
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error.response?.data);
         }
     }
 
 }
+
+
+

@@ -1,0 +1,38 @@
+/* normal seat */
+.ghe{
+    width: 35px;
+    height:35px;
+    border-radius: 5px;
+    cursor: poiner;
+    margin: 5px;
+    background-color: gray;
+    color: white;
+
+}
+.gheDaDat{
+    width: 35px;
+    height:35px;
+    border-radius: 5px;
+    cursor: no-drop;
+    margin: 5px;
+    background-color: red !important;
+    color: white;
+    
+
+}
+.gheDangDat{
+    background-color: green !important;
+    color: white;
+}
+
+.gheVip{
+    background-color: orange ;
+}
+
+.gheDuocDat{
+    background-color: white!important;
+    border: 2px solid green;
+    color:green;
+
+
+}
