@@ -1,1 +1,2 @@
 export const SET_DANGNHAP = 'SET_DANGNHAP'
+export const SET_THONGTIN_USER = 'SET_THONGTIN_USER'
