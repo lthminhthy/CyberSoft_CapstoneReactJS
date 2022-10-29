@@ -1,5 +1,5 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
-import { SET_DANGNHAP } from "./types/QuanLyNguoiDungType";
+import { SET_DANGNHAP, SET_THONGTIN_USER } from "./types/QuanLyNguoiDungType";
 
 
 
@@ -15,10 +15,27 @@ export const dangNhapAction = (thongTinDangNhap ,navigate) => {
                 })
                 navigate(-1)
 
-               
             }
 
 
+            console.log("result: ", result);
+        } catch (error) {
+            console.log(error.response?.data);
+        }
+    }
+
+}
+export const layThongTinNguoiDungAction = () => {
+    return async (dispatch) => {
+        try {
+            const result = await quanLyNguoiDungService.layThongTinNguoiDung()
+
+            if (result.data.statusCode === 200) {
+                dispatch({
+                    type: SET_THONGTIN_USER,
+                    thongTinNguoiDung: result.data.content
+                })
+            }
             console.log("result: ", result);
         } catch (error) {
             console.log(error.response?.data);
