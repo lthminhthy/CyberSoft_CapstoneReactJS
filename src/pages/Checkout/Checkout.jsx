@@ -6,7 +6,7 @@ import { QuanLyNguoiDungReducer } from '../../redux/reducers/QuanLyNguoiDungRedu
 import style from './Checkout.module.css'
 import './Checkout.css'
 import { CloseOutlined, UserOutlined } from '@ant-design/icons'
-import { DAT_VE } from '../../redux/actions/types/QuanLyDatVeType'
+import { CHANGE_TAB_ACTIVE, CHUYEN_TAB, DAT_VE } from '../../redux/actions/types/QuanLyDatVeType'
 import _ from 'lodash'
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe'
 import { Tabs } from 'antd'
@@ -217,7 +217,9 @@ function callback(key) {
 
 }
 export default function (props) {
+  const {tabActive} = useSelector(state => state.QuanLyDatVeReducer)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   return <div className=''>
 
     <button className='flex hover:bg-yellow-300 bg-yellow-200 bg-opacity-50 previous lg:p-1 mt-5 ml-5 rounded-md' onClick={() => {
@@ -230,11 +232,20 @@ export default function (props) {
     </button>
 
     <div className='p-5'>
-      <Tabs defaultActiveKey='1' onChange={callback}>
-        <TabPane tab="01 CHOOSE YOUR SEAT & PAY" key="1">
+      <Tabs defaultActiveKey='1' activeKey={tabActive} onChange={(key)=>{
+        dispatch({
+          type: CHANGE_TAB_ACTIVE,
+          number: key.toString()
+        })
+      }}>
+        <TabPane tab="01 CHOOSE YOUR SEAT & PAY" key="1" 
+       
+        >
           <Checkout  {...props} />
         </TabPane>
-        <TabPane tab="02 TICKET BOOKING RESULTS" key="2">
+        <TabPane tab="02 PAYMENT HISTORY" key="2"
+       
+        >
           <KetQuaDatVe {...props} />
         </TabPane>
 
@@ -264,31 +275,26 @@ function KetQuaDatVe(props) {
       const seats = _.first(ticket.danhSachGhe);
       return <div className="p-4 lg:w-1/2" key={index}>
         <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-          <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={ticket.hinhAnh} />
+          <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={ticket.hinhAnh}  />
           <div className="flex-grow sm:pl-8">
-            <h2 className="title-font font-medium text-lg text-gray-900">{ticket.tenPhim} </h2>
-            <span className="text-gray-500 mb-3">
-              {moment(ticket.ngayDat).format('DD-MM-YYYY')}
+            <h2 className="title-font font-medium text-lg text-gray-900">{ticket.tenPhim}</h2>
+            <h3 className="text-gray-500 mb-3">{moment(ticket.ngayDat).format('DD-MM-YYYY')} | {moment(ticket.ngayDat).format('hh:mm A')}</h3>
+            <span className="mb-4 text-yellow-500">{seats.maHeThongRap}  </span>
+            <span className="mb-4">- {seats.tenHeThongRap} </span>
+            <span className="mb-4">- {seats.tenCumRap} </span>
 
-            </span>
-            <span className='mx-2'>|</span>
-            <span>
-              {moment(ticket.ngayDat).format('hh-mm A')}
-            </span>
-            <p className="mb-4">{seats.tenHeThongRap} </p>
-            <span className="inline-flex">
-              <p className="mb-4">{ticket.danhSachGhe.tenGhe}</p>
-            </span>
-            <div className=''>
-              <p>{seats.tenCumRap} - SEAT:</p>
-              <p className='grid grid-cols-6'> {ticket.danhSachGhe.map((ghe,index) => {
+            <p className='grid grid-cols-6'> {ticket.danhSachGhe.map((ghe,index) => {
               return <span className='m-1 col-span-1 p-2 bg-yellow-300 text-center' key={index}>{ghe.tenGhe}</span>
             })}</p>
-            </div>
+           
             
           </div>
         </div>
       </div>
+     
+   
+
+      
 
     })
   }
@@ -298,9 +304,9 @@ function KetQuaDatVe(props) {
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">TICKET BOOKING RESULTS</h1>
+          <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">PAYMENT HISTORY</h1>
         </div>
-        <div className="flex flex-wrap -m-4 container">
+        <div className="flex flex-wrap -m-4 ">
           {renderTicketHistory()}
 
 
