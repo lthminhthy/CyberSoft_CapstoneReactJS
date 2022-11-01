@@ -13,11 +13,14 @@ import { Tabs } from 'antd'
 import { layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction'
 import moment from 'moment'
 
+import { useTranslation } from 'react-i18next';
+
 
 
 
 
 export const Checkout = () => {
+  const { t, i18n } = useTranslation();
   const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
   const { chiTietPhongVe, danhSachGheDangDat } = useSelector(state => state.QuanLyDatVeReducer)
 
@@ -77,7 +80,7 @@ export const Checkout = () => {
               <div className={`${style['trapezium']}`}></div>
 
             </div>
-            <h3 className='text-center text-black'>screen</h3>
+            <h3 className='text-center text-black'>{t('screen')}</h3>
 
             <div className='text-center lg:mt-10'>
               {renderSeat()}
@@ -86,11 +89,11 @@ export const Checkout = () => {
               <table className='divide-y divide-slate-600 w-2/3'>
                 <thead>
                   <tr>
-                    <th>Standard</th>
-                    <th>VIP seat</th>
-                    <th>Unavailable</th>
-                    <th>Selected</th>
-                    <th>Your seat</th>
+                    <th>{t('Standard')}</th>
+                    <th>{t('VIP seat')}</th>
+                    <th>{t('Unavailable')}</th>
+                    <th>{t('Selected')}</th>
+                    <th>{t('Your seat')}</th>
                   </tr>
                 </thead>
                 <tbody className=' divide-y divide-slate-600 '>
@@ -137,7 +140,7 @@ export const Checkout = () => {
             <div className='grid grid-cols-3 my-5'>
               <div className='col-span-2'>
                 <div className='flex'>
-                  <span className='mr-2'>Seat: </span>
+                  <span className='mr-2'>{t('Seat')}: </span>
                   <div>
                     {_.sortBy(danhSachGheDangDat, ['stt']).map((gheDD, index) => {
                       return <span key={index} className="bg-yellow-300 text-lg px-2 py-1 ">{gheDD.stt}
@@ -160,7 +163,7 @@ export const Checkout = () => {
             </div>
             <hr />
             <div className='my-5'>
-              <i className='mr-1'>Phone:</i>
+              <i className='mr-1'>{t('Phone')}:</i>
 
               {userLogin.soDT}
             </div>
@@ -168,7 +171,7 @@ export const Checkout = () => {
             <div className='grid grid-cols-3 my-5'>
               <div className='col-span-2'>
                 <div className='flex'>
-                  <span className='mr-2 text-black text-base'>SUB TOTAL: </span>
+                  <span className='mr-2 text-black text-base'>{t('SUB TOTAL')}: </span>
                   <div>
                   </div>
 
@@ -194,7 +197,7 @@ export const Checkout = () => {
                 thongTinDatVe.danhSachVe = danhSachGheDangDat;
                 dispatch(datVeAction(thongTinDatVe))
               }}>
-                BUY TICKET
+                {t('BUY TICKET')}
               </div>
 
             </div>
@@ -217,6 +220,8 @@ function callback(key) {
 
 }
 export default function (props) {
+  const { t, i18n } = useTranslation();
+
   const {tabActive} = useSelector(state => state.QuanLyDatVeReducer)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -227,7 +232,7 @@ export default function (props) {
 
     }}>
       <div className='mr-1'>&laquo;</div>
-      <div> Previous</div>
+      <div>{t('Back')}</div>
 
     </button>
 
@@ -238,12 +243,12 @@ export default function (props) {
           number: key.toString()
         })
       }}>
-        <TabPane tab="01 CHOOSE YOUR SEAT & PAY" key="1" 
+        <TabPane tab={t('01 CHOOSE YOUR SEAT & PAY')} key="1" 
        
         >
           <Checkout  {...props} />
         </TabPane>
-        <TabPane tab="02 PAYMENT HISTORY" key="2"
+        <TabPane tab={t('02 PAYMENT HISTORY')} key="2"
        
         >
           <KetQuaDatVe {...props} />
@@ -260,6 +265,7 @@ export default function (props) {
 
 
 function KetQuaDatVe(props) {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
   const { thongTinNguoiDung } = useSelector(state => state.QuanLyNguoiDungReducer)
   const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
@@ -267,11 +273,13 @@ function KetQuaDatVe(props) {
   useEffect(() => {
     const action = layThongTinNguoiDungAction()
     dispatch(action)
+
   }, [])
 
   const renderTicketHistory = () => {
 
     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
+      
       const seats = _.first(ticket.danhSachGhe);
       return <div className="p-4 lg:w-1/2" key={index}>
         <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
@@ -299,15 +307,15 @@ function KetQuaDatVe(props) {
     })
   }
 
-
   return <div>
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">PAYMENT HISTORY</h1>
+          <h1 className="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">{t('PAYMENT HISTORY')}</h1>
         </div>
         <div className="flex flex-wrap -m-4 ">
           {renderTicketHistory()}
+          
 
 
         </div>
