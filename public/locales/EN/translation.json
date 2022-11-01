@@ -1,0 +1,33 @@
+{
+    "Hello": "Hello",
+    "Sign in" : "Sign in",
+    "Sign up" : "Sign up", 
+    "Home" : "Home",
+    "Contact" : "Contact",
+    "News" : "News",
+    "Now Showing" : "Now Showing",
+    "Coming Soon" : "Coming Soon",
+    "BUY TICKET" : "BUY TICKET",
+    "SHOWTIME" : "SHOWTIME",
+    "DETAILS" : "DETAILS",
+    "EVALUATE" : "EVALUATE",
+    "Release date" : "Release date",
+    "Evaluate" : "Evaluate",
+    "Back" : "Back",
+    "01 CHOOSE YOUR SEAT & PAY" : "01 CHOOSE YOUR SEAT & PAY",
+    "02 PAYMENT HISTORY" : "02 PAYMENT HISTORY",
+    "screen" : "screen",
+    "Phone" : "Phone",
+    "SUB TOTAL" : "SUB TOTAL",
+    "Standard" : "Standard",
+    "VIP seat" : "VIP seat",
+    "Unavailable" : "Unavailable",
+    "Selected" : "Selected",
+    "Your seat" : "Your seat",
+    "Seat" : "Seat",
+    "PAYMENT HISTORY" : "PAYMENT HISTORY"
+
+
+
+}
+

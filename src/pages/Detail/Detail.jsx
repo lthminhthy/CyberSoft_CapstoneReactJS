@@ -8,6 +8,7 @@ import { SET_FILM_DETAIL } from '../../redux/actions/types/QuanLyRapType';
 import { layThongTinLichChieuPhimAction } from '../../redux/actions/QuanLyRapAction';
 import moment from 'moment/moment';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 const { TabPane } = Tabs;
@@ -15,6 +16,7 @@ const { TabPane } = Tabs;
 
 
 const Detail = (props) => {
+    const { t, i18n } = useTranslation();
 
     const phimDetail = useSelector(state => state.QuanLyRapReducer.phimDetail);
     console.log("phimDetail: ", phimDetail);
@@ -45,10 +47,10 @@ const Detail = (props) => {
 
                                 <div className='ml-8 col-span-2 col-start-2'>
                                     <h1 className='font-semibold text-white lg:text-4xl md:text-2xl sm:text-base text-sm'>{phimDetail.tenPhim}</h1>
-                                    <p>Release date: {moment(phimDetail.ngayKhoiChieu).format('DD-MM-YYYY')}</p>
+                                    <p>{t('Release date')}: {moment(phimDetail.ngayKhoiChieu).format('DD-MM-YYYY')}</p>
                                     <p className='mt-10'>{phimDetail.moTa}</p>
                                     <div className='flex items-center	'>
-                                        <div>Evaluate: </div>
+                                        <div>{t('Evaluate')}: </div>
                                         <div className="pacss-wrapper text-black">
                                             <span className="pacss-foreground">
                                                 <span className="pacss-number">{phimDetail.danhGia}</span>
@@ -68,7 +70,7 @@ const Detail = (props) => {
                         <div className='container'>
                             <div className='bg-gray-300 bg-opacity-70  rounded-2xl'>
                                 <Tabs className='text-white' defaultActiveKey='1' centered>
-                                    <TabPane style={{ minHeight: 300 }} tab={<div className=' font-semibold text-yellow-500 hover:text-white'>SHOWTIME</div>} key="1">
+                                    <TabPane style={{ minHeight: 300 }} tab={<div className=' font-semibold text-yellow-500 hover:text-white'>{t('SHOWTIME')}</div>} key="1">
                                         <div className='container '>
 
                                             <div className='lg:mb-20 px-2 py-10'>
@@ -108,8 +110,8 @@ const Detail = (props) => {
                                             </div>
                                         </div>
                                     </TabPane>
-                                    <TabPane tab="DETAILS" key="2">DETAILS</TabPane>
-                                    <TabPane tab="EVALUATE" key="3">EVALUATE</TabPane>
+                                    <TabPane tab={t('DETAILS')} key="2">{t('DETAILS')}</TabPane>
+                                    <TabPane tab={t('EVALUATE')} key="3">{t('EVALUATE')}</TabPane>
 
                                 </Tabs>
                             </div>

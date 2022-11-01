@@ -29,11 +29,13 @@ export const layThongTinNguoiDungAction = () => {
     return async (dispatch) => {
         try {
             const result = await quanLyNguoiDungService.layThongTinNguoiDung()
+            console.log("result tong tin nguoi dung: ", result);
 
             if (result.data.statusCode === 200) {
                 dispatch({
                     type: SET_THONGTIN_USER,
                     thongTinNguoiDung: result.data.content
+                    
                 })
             }
             console.log("result: ", result);

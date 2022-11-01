@@ -6,6 +6,8 @@ import { SET_COMING, SET_LISTFILM, SET_SHOWING } from "../../redux/actions/types
 import Film_flip from "../Film/Film_flip";
 import styleSlick from './MultipleRowSlick.module.css'
 
+import { useTranslation } from 'react-i18next';
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -32,6 +34,7 @@ function SamplePrevArrow(props) {
 
 
 const MultipleRow = (props) => { 
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
   const {dangChieu, sapChieu} = useSelector(state => state.QuanLyPhimReducer)
 
@@ -69,11 +72,11 @@ console.log("activeShowing: ", activeShowing);
           <button type="button" className={`${styleSlick[activeShowing]} px-3 py-1 font-semibold `} onClick={() => {
             const action = {type: SET_SHOWING}
             dispatch(action)
-          }}>Now Showing</button>
+          }}>{t('Now Showing')}</button>
           <button type="button" className={`${styleSlick[activeComing]} px-3 py-1 font-semibold text-black`} onClick={() => {
             const action = {type: SET_COMING}
             dispatch(action)
-          }}>Coming Soon</button>
+          }}>{t('Coming Soon')}</button>
         </div>
         <Slider {...settings}>
           {renderPhims()}
