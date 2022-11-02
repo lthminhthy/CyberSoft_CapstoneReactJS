@@ -16,10 +16,10 @@ export default function Film_flip(props) {
                         <img className="lg:h-48 md:h-36 lg:w-full object-cover object-center opacity-0" style={{ height: '200px' }} src={phim.hinhAnh} alt={phim.tenPhim} />
                     </div></a>
                 <div className="property-description border-0">
-                <h1 className="title-font text-lg font-medium text-gray-900 h-14">{phim.tenPhim}</h1>
-                <div className='buy-ticket '>
+                <h1 className="title-font lg:text-lg sm:text-base text-sm font-medium text-gray-900 h-14">{phim.tenPhim}</h1>
+                <div className='buy-ticket lg:text-lg sm:text-base text-sm '>
                     <button className='bg-yellow-400 p-2 rounded-lg mb-2'>
-                    <NavLink to={`/detail/${phim.maPhim}`} className=" font-semibold text-black inline-flex items-center md:mb-2 lg:mb-0 hover:text-white ">{t('BUY TICKET')}
+                    <NavLink to={`/detail/${phim.maPhim}`} className="lg:text-lg sm:text-base text-sm font-semibold text-black inline-flex items-center md:mb-2 lg:mb-0 hover:text-white ">{t('BUY TICKET')}
                     </NavLink>
                 </button>
                 </div>

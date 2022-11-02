@@ -87,6 +87,16 @@
 } */
 
 
+@media only screen and (min-width: 350px) {
+  .property-card {
+    width: 10em; 
+  }
+}
+@media only screen and (min-width: 350px) {
+  .property-card:hover .property-description {
+    width: 10em;
+  }
+}
 @media only screen and (min-width: 500px) {
   .property-card {
     width: 11em; 
