@@ -21,6 +21,7 @@ const Home = () => {
     const action = layDanhSachPhimAction()
     dispatch(action)
     dispatch(layDanhSachHeThongRapAction())
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [])
 
 
@@ -34,7 +35,7 @@ const Home = () => {
         </div>
       </section>
       <div className='lg:mx-36 lg:my-16'>
-        <HomeMenu heThongRap={heThongRap}></HomeMenu>
+        {/* <HomeMenu heThongRap={heThongRap}></HomeMenu> */}
         
 
       </div>

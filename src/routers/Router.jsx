@@ -1,4 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom"
+import Profile from "../components/Profile/Profile"
 import Checkout from "../pages/Checkout/Checkout"
 import Contact from "../pages/Contact/Contact"
 import Detail from "../pages/Detail/Detail"
@@ -39,6 +40,10 @@ export const Router = () => {
                     path:'detail/:id',
                     element: <Detail></Detail>
                 },
+                {
+                    path:'profile',
+                    element: <Profile></Profile>
+                }
             ]
         },
         {

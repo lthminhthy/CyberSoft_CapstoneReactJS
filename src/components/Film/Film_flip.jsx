@@ -13,7 +13,7 @@ export default function Film_flip(props) {
                 <a href="#">
                     <div className="property-image img-card" style={{
                 background: `url(${phim.hinhAnh}), url(https://picsum.photos/1000/200)`}}>
-                        <img className="lg:h-48 md:h-36 w-full object-cover object-center opacity-0" style={{ height: '200px' }} src={phim.hinhAnh} alt={phim.tenPhim} />
+                        <img className="lg:h-48 md:h-36 lg:w-full object-cover object-center opacity-0" style={{ height: '200px' }} src={phim.hinhAnh} alt={phim.tenPhim} />
                     </div></a>
                 <div className="property-description border-0">
                 <h1 className="title-font text-lg font-medium text-gray-900 h-14">{phim.tenPhim}</h1>

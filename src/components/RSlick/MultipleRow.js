@@ -56,7 +56,7 @@ console.log("activeShowing: ", activeShowing);
     const settings = {
       className: "center variable-width",
       centerMode: true,
-      infinite: true,
+      // infinite: true,
       centerPadding: "60px",
       slidesToShow: 4,
       speed: 500,
@@ -65,6 +65,42 @@ console.log("activeShowing: ", activeShowing);
       variableWidth: true,
       nextArrow: <SampleNextArrow></SampleNextArrow>,
       prevArrow: <SamplePrevArrow></SamplePrevArrow>,
+      responsive: [
+        {
+            breakpoint: 1247,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                // infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 885,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                // infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                initialSlide: 1
+            }
+        },
+        {
+            breakpoint: 500,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ],
+
     };
     return (
       <div>
@@ -78,7 +114,7 @@ console.log("activeShowing: ", activeShowing);
             dispatch(action)
           }}>{t('Coming Soon')}</button>
         </div>
-        <Slider {...settings}>
+        <Slider {...settings } >
           {renderPhims()}
         </Slider>
       </div>

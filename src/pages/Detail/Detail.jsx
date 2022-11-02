@@ -16,6 +16,10 @@ const { TabPane } = Tabs;
 
 
 const Detail = (props) => {
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    },[])
     const { t, i18n } = useTranslation();
 
     const phimDetail = useSelector(state => state.QuanLyRapReducer.phimDetail);
