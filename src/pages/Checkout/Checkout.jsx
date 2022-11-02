@@ -30,6 +30,7 @@ export const Checkout = () => {
   useEffect(() => {
     const action = layChiTietPhongVeAction(param.id)
     dispatch(action)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [])
 
   const { thongTinPhim, danhSachGhe } = chiTietPhongVe;
@@ -222,9 +223,26 @@ function callback(key) {
 export default function (props) {
   const { t, i18n } = useTranslation();
 
-  const {tabActive} = useSelector(state => state.QuanLyDatVeReducer)
+  const { tabActive } = useSelector(state => state.QuanLyDatVeReducer)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
+
+  const operations = <Fragment>
+    {!_.isEmpty(userLogin) ? <button onClick={() => {
+      navigate("/profile")
+    }}>
+      <div className='flex justify-center items-center'>
+        <div className="overflow-hidden relative w-8 h-8 bg-black rounded-full dark:bg-gray-600">
+        <svg className="absolute -left-1 w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
+        
+        </div>
+        <span className="ml-3 font-medium text-gray-600 dark:text-gray-300">{userLogin.taiKhoan}</span>
+      </div>
+    </button> : ''}
+  </Fragment>
+
   return <div className=''>
 
     <button className='flex hover:bg-yellow-300 bg-yellow-200 bg-opacity-50 previous lg:p-1 mt-5 ml-5 rounded-md' onClick={() => {
@@ -237,19 +255,19 @@ export default function (props) {
     </button>
 
     <div className='p-5'>
-      <Tabs defaultActiveKey='1' activeKey={tabActive} onChange={(key)=>{
+      <Tabs tabBarExtraContent={operations} defaultActiveKey='1' activeKey={tabActive} onChange={(key) => {
         dispatch({
           type: CHANGE_TAB_ACTIVE,
           number: key.toString()
         })
       }}>
-        <TabPane tab={t('01 CHOOSE YOUR SEAT & PAY')} key="1" 
-       
+        <TabPane tab={t('01 CHOOSE YOUR SEAT & PAY')} key="1"
+
         >
           <Checkout  {...props} />
         </TabPane>
         <TabPane tab={t('02 PAYMENT HISTORY')} key="2"
-       
+
         >
           <KetQuaDatVe {...props} />
         </TabPane>
@@ -273,17 +291,18 @@ function KetQuaDatVe(props) {
   useEffect(() => {
     const action = layThongTinNguoiDungAction()
     dispatch(action)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
   }, [])
 
   const renderTicketHistory = () => {
 
     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
-      
+
       const seats = _.first(ticket.danhSachGhe);
       return <div className="p-4 lg:w-1/2" key={index}>
         <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-          <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={ticket.hinhAnh}  />
+          <img alt="team" className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src={ticket.hinhAnh} />
           <div className="flex-grow sm:pl-8">
             <h2 className="title-font font-medium text-lg text-gray-900">{ticket.tenPhim}</h2>
             <h3 className="text-gray-500 mb-3">{moment(ticket.ngayDat).format('DD-MM-YYYY')} | {moment(ticket.ngayDat).format('hh:mm A')}</h3>
@@ -291,18 +310,18 @@ function KetQuaDatVe(props) {
             <span className="mb-4">- {seats.tenHeThongRap} </span>
             <span className="mb-4">- {seats.tenCumRap} </span>
 
-            <p className='grid grid-cols-6'> {ticket.danhSachGhe.map((ghe,index) => {
+            <p className='grid grid-cols-6'> {ticket.danhSachGhe.map((ghe, index) => {
               return <span className='m-1 col-span-1 p-2 bg-yellow-300 text-center' key={index}>{ghe.tenGhe}</span>
             })}</p>
-           
-            
+
+
           </div>
         </div>
       </div>
-     
-   
 
-      
+
+
+
 
     })
   }
@@ -315,7 +334,7 @@ function KetQuaDatVe(props) {
         </div>
         <div className="flex flex-wrap -m-4 ">
           {renderTicketHistory()}
-          
+
 
 
         </div>

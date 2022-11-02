@@ -24,6 +24,11 @@
     "Unavailable" : "Đã bán",
     "Selected" : "Đang chọn",
     "Your seat" : "Ghế bạn đặt",
-    "PAYMENT HISTORY" : "LỊCH SỬ ĐẶT VÉ"
+    "PAYMENT HISTORY" : "LỊCH SỬ ĐẶT VÉ",
+    "Register" : "Đăng ký",
+    "Full Name" : "Họ Tên",
+    "Telephone" : "Số điện thoại",
+    "Log Out" : "Đăng xuất"
+
 
 }

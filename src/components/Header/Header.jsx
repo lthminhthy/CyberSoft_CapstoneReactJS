@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -7,6 +7,8 @@ import { Select } from 'antd';
 
 // i18next
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import _ from 'lodash';
 
 
 
@@ -18,9 +20,38 @@ const { Option } = Select;
 
 const Header = () => {
 
+    const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
+
     const { t, i18n } = useTranslation();
     const handleChange = (value) => {
         i18n.changeLanguage(value)
+
+    }
+
+    const renderLogin = () => {
+        if (_.isEmpty(userLogin)) {
+            return <Fragment>
+                <button className="self-center px-8 py-3 rounded bg-yellow-400 text-gray-900 hover:text-white" onClick={() => {
+                    navigate('/login')
+                }}>{t('Sign in')}</button>
+                <button className="hover:text-yellow-500 self-center px-8 py-3 font-semibold rounded " onClick={() => {
+                    navigate('/register')
+                }}>{t('Register')}</button>
+            </Fragment>
+        }
+        return <button onClick={() => {
+            navigate("/profile")
+        }}>
+            <div className='flex justify-center items-center mr-4'>
+                <div className="overflow-hidden relative w-8 h-8 bg-black rounded-full dark:bg-gray-600">
+                    <svg className="absolute -left-1 w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
+                    
+
+                </div>
+                <span className="ml-3 font-medium text-white dark:text-gray-300">{userLogin.taiKhoan}</span>
+            </div>
+        </button>
+
 
     }
     let navigate = useNavigate();
@@ -51,25 +82,30 @@ const Header = () => {
 
                 </ul>
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    <button className="self-center px-8 py-3 rounded bg-yellow-400 text-gray-900 hover:text-white" onClick={() => {
+                    {renderLogin()}
+
+
+
+
+                    {/* <button className="self-center px-8 py-3 rounded bg-yellow-400 text-gray-900 hover:text-white" onClick={() => {
                         navigate('/login')
                     }}>{t('Sign in')}</button>
                     <button className="hover:text-yellow-500 self-center px-8 py-3 font-semibold rounded " onClick={() => {
                         navigate('/register')
-                    }}>{t('Sign up')}</button>
+                    }}>{t('Register')}</button> */}
                     <Select
                         defaultValue="EN"
                         style={{
                             width: 80,
                             color: 'yellow',
-                            
+
                         }}
                         bordered={false}
                         onChange={handleChange}
                     >
                         <Option value="EN">EN</Option>
                         <Option value="VI">VI</Option>
-                        
+
                     </Select>
                 </div>
 
