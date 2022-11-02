@@ -34,8 +34,8 @@ const Home = () => {
          {arrPhim.length > 0 && <MultipleRow arrPhim={arrPhim}></MultipleRow>}
         </div>
       </section>
-      <div className='lg:mx-36 lg:my-16'>
-        {/* <HomeMenu heThongRap={heThongRap}></HomeMenu> */}
+      <div className='lg:mx-36 lg:my-16 mx-5 my-5'>
+        <HomeMenu heThongRap={heThongRap}></HomeMenu>
         
 
       </div>

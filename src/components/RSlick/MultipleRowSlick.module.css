@@ -17,6 +17,6 @@
 }
 
 .non-active_Film{
-      @apply text-yellow-300;
+      @apply text-black;
     
 }

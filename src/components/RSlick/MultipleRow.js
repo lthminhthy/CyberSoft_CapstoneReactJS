@@ -50,13 +50,12 @@ const MultipleRow = (props) => {
   let activeShowing = dangChieu === true ? 'active_Film':'non-active_Film' ;
   
   let activeComing = sapChieu === true ? 'active_Film' : 'non-active_Film';
-  console.log("activeComing: ", activeComing);
-console.log("activeShowing: ", activeShowing);
+  
 
     const settings = {
       className: "center variable-width",
       centerMode: true,
-      // infinite: true,
+      infinite: true,
       centerPadding: "60px",
       slidesToShow: 4,
       speed: 500,
@@ -69,9 +68,18 @@ console.log("activeShowing: ", activeShowing);
         {
             breakpoint: 1247,
             settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 1190,
+            settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,
-                // infinite: true,
+                infinite: true,
                 dots: true
             }
         },
@@ -80,7 +88,7 @@ console.log("activeShowing: ", activeShowing);
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
-                // infinite: true,
+                infinite: true,
                 dots: true
             }
         },
@@ -93,7 +101,7 @@ console.log("activeShowing: ", activeShowing);
             }
         },
         {
-            breakpoint: 500,
+            breakpoint: 470,
             settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1
