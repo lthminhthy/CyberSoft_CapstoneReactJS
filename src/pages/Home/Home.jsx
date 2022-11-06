@@ -21,8 +21,12 @@ const Home = () => {
     const action = layDanhSachPhimAction()
     dispatch(action)
     dispatch(layDanhSachHeThongRapAction())
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
   }, [])
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
 
 
 

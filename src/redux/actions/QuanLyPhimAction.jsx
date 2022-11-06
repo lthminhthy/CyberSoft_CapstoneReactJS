@@ -6,6 +6,7 @@ export const layDanhSachPhimAction = () => {
     return async (dispatch) => {
         try {
             const result = await quanLyPhimService.layDanhSachPhim()
+            
            
 
             dispatch({
