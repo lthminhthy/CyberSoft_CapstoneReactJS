@@ -14,7 +14,7 @@ const Footer = (props) => {
     <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
       <div className="lg:w-1/3">
         <a rel="noopener noreferrer" href="#" aria-label="Back to homepage" className="flex items-center p-2">
-          <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
+          <img className='sm:w-40 w-32 ' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
         </a>
       </div>
       <div className="grid grid-cols-2 text-sm gap-x-1 gap-y-8 lg:w-2/3 sm:grid-cols-4">

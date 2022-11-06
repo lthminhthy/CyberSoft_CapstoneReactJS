@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const Profile = () => {
     const { t, i18n } = useTranslation();
 
-    const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer)
+    const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
     const navigate = useNavigate()
     return (
         <main className="profile-page">
@@ -40,18 +40,18 @@ const Profile = () => {
                                             navigate('/home');
                                             window.location.reload();
 
-                                        }} className="bg-yellow-400 hover:bg-yellow-700 active:bg-yellow-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150">
+                                        }} className="bg-yellow-400 hover:bg-red-700 active:bg-yellow-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150">
                                             {t('Log Out')}
                                         </button>
                                     </div>
                                 </div>
                                 <div className="w-full lg:w-4/12 px-4 lg:order-1">
-                                    
+
                                 </div>
                             </div>
                             <div className="text-center mt-12">
                                 <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 ">
-                                {userLogin.taiKhoan}
+                                    {userLogin.taiKhoan}
                                 </h3>
                                 <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                                     <i className=" mr-2 text-lg text-blueGray-400" />
@@ -63,18 +63,22 @@ const Profile = () => {
                                 <div className="mb-2 text-blueGray-600">
                                     <i className="fas fa-university mr-2 text-lg text-blueGray-400" />{t('Telephone')}: {userLogin.soDT}
                                 </div>
+
                             </div>
                             <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                                 <div className="flex flex-wrap justify-center">
                                     <div className="w-full lg:w-9/12 px-4">
-                                        
+                                        <div className="mb-2 text-blueGray-400">
+                                            {userLogin.maLoaiNguoiDung}
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </section>
         </main>
 

@@ -35,7 +35,7 @@ export default function HomeMenu(props) {
           {heThongRapChieu.lstCumRap?.slice(1,5).map((cumRap, index) => {
             return <TabPane tab={
               <div style={{  display: 'flex' }}>
-                <img src={heThongRapChieu.logo} className='lg:w-10 sm:w-0 w-0' />
+                <img src={heThongRapChieu.logo} className='lg:w-14 sm:w-0 w-0' />
                 <div className='text-left lg:ml-2 text-black 	'>
                   <span className='md:text-base sm:text-xs text-xs'>{cumRap.tenCumRap}</span>
                   <p className='lg:text-sm sm:text-xs  text-xs text-yellow-500 md:block hidden'>{cumRap.diaChi}</p>
@@ -52,7 +52,7 @@ export default function HomeMenu(props) {
                   <div className='my-2 respon '>
                     <div style={{ display: 'flex' }}>
                      
-                      <img className='md:w-28 md:h-32 w-8 h-12 sm:block hidden'  src={phim.hinhAnh} alt={phim.tenPhim} onError={(e) => { 
+                      <img className='md:w-28 md:h-32 w-8 h-12 sm:block hidden rounded-md'  src={phim.hinhAnh} alt={phim.tenPhim} onError={(e) => { 
                         e.target.onerror = null; e.target.src = 'https://picsum.photos/75/75'}} />
                       <div className='ml-3 md:block '>
                         <h1 className='lg:text-xl sm:text-base text-sm font-semibold'>{phim.tenPhim}</h1>

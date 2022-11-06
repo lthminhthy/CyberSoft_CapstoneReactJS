@@ -1,12 +1,16 @@
 import { Navigate, useRoutes } from "react-router-dom"
 import Profile from "../components/Profile/Profile"
+import AdFilms from "../pages/AdminFilms/AdFilms"
 import Checkout from "../pages/Checkout/Checkout"
 import Contact from "../pages/Contact/Contact"
+import Dashboard from "../pages/Dashboard/Dashboard"
 import Detail from "../pages/Detail/Detail"
 import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
 import News from "../pages/News/News"
 import Register from "../pages/Register/Register"
+import ShowTime from "../pages/ShowTime/ShowTime"
+import AdminTemplate from "../templates/AdminTemplate/AdminTemplate"
 import CheckoutTemplate from "../templates/CheckoutTemplate/CheckoutTemplate"
 import  MainTemplate from "../templates/MainTemplate/MainTemplate"
 import UserTemplate from "../templates/UserTemplate/UserTemplate"
@@ -71,10 +75,26 @@ export const Router = () => {
 
             ]
             
-        }
-        // {
-        //   
-        // }
+        },
+        {
+            path:'/',
+            element: <AdminTemplate></AdminTemplate>,
+            children:[
+                {
+                    path:'admin/user',
+                    element: <Dashboard></Dashboard>
+                },
+                {
+                    path:'admin/film',
+                    element: <AdFilms></AdFilms>
+                },
+                {
+                    path:'admin/showtime',
+                    element: <ShowTime></ShowTime>
+                }
+            ]
+          
+        },
 
 
     ])

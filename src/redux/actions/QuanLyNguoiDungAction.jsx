@@ -13,9 +13,9 @@ export const dangNhapAction = (thongTinDangNhap ,navigate) => {
                     type: SET_DANGNHAP,
                     thongTinDangNhap: result.data.content
                 })
-                navigate(-1)
+                
 
-            }
+            }navigate(-1)
 
 
             console.log("result: ", result);
