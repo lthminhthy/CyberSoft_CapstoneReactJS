@@ -19,3 +19,20 @@ export const layDanhSachPhimAction = () => {
         }
     };
 }
+export const themPhimUploadHinhAction = (formData) => {
+    return async (dispatch) => {
+        try  {
+            let result = await quanLyPhimService.themPhimUploadHinh(formData);
+            alert('Thêm phim thành công!')
+
+            dispatch({
+
+            })
+
+        }catch(error){
+            console.log("error: ", error);
+
+        }
+    }
+
+}

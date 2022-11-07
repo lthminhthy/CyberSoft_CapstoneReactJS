@@ -1,15 +1,18 @@
 import { Navigate, useRoutes } from "react-router-dom"
 import Profile from "../components/Profile/Profile"
-import AdFilms from "../pages/AdminFilms/AdFilms"
+import AddNewFilm from "../pages/Admin/AdminFilms/AddNewFilm"
+import AdFilms from "../pages/Admin/AdminFilms/AdFilms"
+import Dashboard from "../pages/Admin/Dashboard/Dashboard"
+import ShowTime from "../pages/Admin/ShowTime/ShowTime"
+
 import Checkout from "../pages/Checkout/Checkout"
 import Contact from "../pages/Contact/Contact"
-import Dashboard from "../pages/Dashboard/Dashboard"
+
 import Detail from "../pages/Detail/Detail"
 import Home from "../pages/Home/Home"
 import Login from "../pages/Login/Login"
 import News from "../pages/News/News"
 import Register from "../pages/Register/Register"
-import ShowTime from "../pages/ShowTime/ShowTime"
 import AdminTemplate from "../templates/AdminTemplate/AdminTemplate"
 import CheckoutTemplate from "../templates/CheckoutTemplate/CheckoutTemplate"
 import  MainTemplate from "../templates/MainTemplate/MainTemplate"
@@ -86,7 +89,13 @@ export const Router = () => {
                 },
                 {
                     path:'admin/film',
-                    element: <AdFilms></AdFilms>
+                    element: <AdFilms></AdFilms>,
+
+                },
+                {
+                    path:'admin/film/add',
+                    element: <AddNewFilm></AddNewFilm>,
+
                 },
                 {
                     path:'admin/showtime',
