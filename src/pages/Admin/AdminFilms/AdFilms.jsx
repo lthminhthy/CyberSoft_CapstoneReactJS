@@ -5,8 +5,8 @@ import { Input, Space } from 'antd';
 import { Button, Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { layDanhSachPhimAction } from '../../redux/actions/QuanLyPhimAction';
-import { NavLink } from 'react-router-dom';
+import { layDanhSachPhimAction } from '../../../redux/actions/QuanLyPhimAction';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { EditOutlined,DeleteOutlined } from '@ant-design/icons';
 import './AdminFilm.css'
 
@@ -119,6 +119,7 @@ const AdFilms = () => {
   const onChange = (pagination, filters, sorter, extra) => {
     console.log('params', pagination, filters, sorter, extra);
   };
+  const navigate = useNavigate()
 
  
   return (
@@ -135,12 +136,14 @@ const AdFilms = () => {
             }}
           />
         </Space>
-        <Button type="primary" shape="circle" size="large" >
+        <Button type="primary" shape="circle" size="large" onClick={() => {
+          navigate('/admin/film/add')
+        }} >
           +
         </Button>
       </div>
 
-      <Table className='mt-2' columns={columns} dataSource={data} onChange={onChange} ></Table>
+      <Table className='mt-5' columns={columns} dataSource={data} onChange={onChange} ></Table>
 
 
     </div>

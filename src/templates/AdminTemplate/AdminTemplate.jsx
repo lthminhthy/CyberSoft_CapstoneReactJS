@@ -1,33 +1,30 @@
 import {
-    DesktopOutlined,
-    FileOutlined,
-    PieChartOutlined,
-    TeamOutlined,
     UserOutlined,
     FolderOutlined,
-    FieldTimeOutlined
+    FieldTimeOutlined,
+    FileAddOutlined
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet, useNavigate } from 'react-router';
 import { USER_LOGIN } from '../../util/settings/config';
-import { QuanLyNguoiDungReducer } from '../../redux/reducers/QuanLyNguoiDungReducer';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import SubMenu from 'antd/lib/menu/SubMenu';
 
 
 
 
 
 const { Header, Content, Footer, Sider } = Layout;
-function getItem(label, key, icon, children) {
+function getItem(label, key, icon, items) {
     return {
         key,
         icon,
-        children,
+        items,
         label,
     };
-} 
+}
 
 
 
@@ -67,13 +64,21 @@ const App = () => {
                     <Menu.Item key='1' icon={<UserOutlined />}>
                         <NavLink to='/admin/user'>User</NavLink>
                     </Menu.Item>
-                    <Menu.Item key='2' icon={<FolderOutlined />}>
-                        <NavLink to='/admin/film'>Films</NavLink>
-                    </Menu.Item>
+                    <SubMenu key='sub1' icon={<FolderOutlined />} title="Films">
+                        <Menu.Item key='10' icon={<FolderOutlined /> }>
+                            <NavLink to='/admin/film'>Films</NavLink>
+                            
+                        </Menu.Item>
+                        <Menu.Item key='11' icon={<FileAddOutlined />}>
+                        <NavLink to='/admin/film/add'>Add Film</NavLink>
+                            
+                        </Menu.Item>
+                    </SubMenu>
+
                     <Menu.Item key='3' icon={<FieldTimeOutlined />}>
                         <NavLink to='/admin/showtime'>Showtime</NavLink>
                     </Menu.Item>
-                    
+
 
                 </Menu>
             </Sider>
