@@ -1,3 +1,4 @@
 export const SET_LISTFILM = 'SET_LISTFILM'
 export const SET_SHOWING = 'SET_SHOWING'
 export const SET_COMING = 'SET_COMING'
+export const SET_THONGTIN_PHIM = 'SET_THONGTIN_PHIM'

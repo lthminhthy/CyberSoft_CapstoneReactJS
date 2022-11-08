@@ -5,9 +5,9 @@ import { Input, Space } from 'antd';
 import { Button, Tooltip } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { layDanhSachPhimAction } from '../../../redux/actions/QuanLyPhimAction';
+import { layDanhSachPhimAction, xoaPhimAction } from '../../../redux/actions/QuanLyPhimAction';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { EditOutlined,DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined,DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import './AdminFilm.css'
 
 
@@ -25,7 +25,12 @@ const AdFilms = () => {
     dispatch(layDanhSachPhimAction())
   },[])
 
-  const onSearch = (value) => console.log(value);
+  const onSearch = (value) => {
+    console.log("value: ", value);
+    // call api laydanhsachphim
+    dispatch(layDanhSachPhimAction(value));
+
+  };
 
   const columns = [
     {
@@ -90,20 +95,23 @@ const AdFilms = () => {
     },
     {
       title: 'Hành Động',
-      dataIndex: 'hanhDong',
+      dataIndex: 'maPhim',
       sorter: (a, b) => {
-        let moTaA = a.moTa.toLowerCase().trim();
-        let moTaB = b.moTa.toLowerCase().trim();
-        if(moTaA<moTaB){
-          return 1
-
-        }
-        return -1
+        
       },
       render: (text, film) => { return <Fragment >
         <div className='text-center'>
-          <NavLink to='/' className='hover:bg-yellow-500 bg-white border border-yellow-500 text-yellow-500 hover:text-white px-4 py-1.5  rounded-md mr-3 font-bold text-lg'><EditOutlined></EditOutlined></NavLink>
-          <NavLink to='/' className='hover:bg-red-500  border border-red-500 text-red-500 hover:text-white px-4 py-1.5 rounded-md mr-3 font-bold text-lg'><DeleteOutlined /></NavLink>
+          <NavLink to={`/admin/film/edit/${film.maPhim}`} className='hover:bg-yellow-500 bg-white border border-yellow-500 text-yellow-500 hover:text-white px-3 py-1.5  rounded-md mr-3 font-bold text-lg'><EditOutlined></EditOutlined></NavLink>
+          <span style={{cursor: 'pointer'}} className='hover:bg-red-500  border border-red-500 text-red-500 hover:text-white px-3 py-1.5 rounded-md mr-3 font-bold text-lg' onClick={() => {
+            if(window.confirm('Bạn có chắc muốn xóa phim ' + film.tenPhim + ' không?')){
+              dispatch(xoaPhimAction(film.maPhim));
+            }
+
+          }}><DeleteOutlined /></span>
+          <NavLink to={`/admin/film/showtime/${film.maPhim}/${film.tenPhim}`} className='hover:bg-blue-500 bg-white border border-blue-500 text-blue-500 hover:text-white px-3 py-1.5  rounded-md mr-3 font-bold text-lg' onClick={() => {
+            localStorage.setItem('filmParam',JSON.stringify(film))
+            console.log("filmparam: ", film);
+          }}><CalendarOutlined /></NavLink>
         </div>
           
         </Fragment>
@@ -127,14 +135,8 @@ const AdFilms = () => {
       <h2 className='lg:text-lg text-base mb-5'>Quản Lý Phim</h2>
       <div className='flex justify-between items-center'>
         <Space direction="vertical">
-          <Search
-            placeholder="input search text"
-            allowClear
-            onSearch={onSearch}
-            style={{
-              width: 'auto',
-            }}
-          />
+        
+          <Search placeholder="Nhập tên phim cần tìm" onSearch={onSearch} enterButton allowClear  size="large"/>
         </Space>
         <Button type="primary" shape="circle" size="large" onClick={() => {
           navigate('/admin/film/add')
@@ -143,7 +145,7 @@ const AdFilms = () => {
         </Button>
       </div>
 
-      <Table className='mt-5' columns={columns} dataSource={data} onChange={onChange} ></Table>
+      <Table className='mt-5' columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"}></Table>
 
 
     </div>

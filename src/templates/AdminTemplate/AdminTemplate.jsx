@@ -59,8 +59,11 @@ const App = () => {
 
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div className="logo" />
-                <img className='p-3 w-auto' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" >
+                <NavLink to='/'>
+                    <img className='p-3 w-auto' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
+                </NavLink>
+                
+                <Menu theme="dark" mode="inline" >
                     <Menu.Item key='1' icon={<UserOutlined />}>
                         <NavLink to='/admin/user'>User</NavLink>
                     </Menu.Item>
@@ -75,9 +78,6 @@ const App = () => {
                         </Menu.Item>
                     </SubMenu>
 
-                    <Menu.Item key='3' icon={<FieldTimeOutlined />}>
-                        <NavLink to='/admin/showtime'>Showtime</NavLink>
-                    </Menu.Item>
 
 
                 </Menu>

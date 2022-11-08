@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from "react-router-dom"
 import Profile from "../components/Profile/Profile"
 import AddNewFilm from "../pages/Admin/AdminFilms/AddNewFilm"
 import AdFilms from "../pages/Admin/AdminFilms/AdFilms"
+import EditFilm from "../pages/Admin/AdminFilms/EditFilm"
 import Dashboard from "../pages/Admin/Dashboard/Dashboard"
 import ShowTime from "../pages/Admin/ShowTime/ShowTime"
 
@@ -80,25 +81,30 @@ export const Router = () => {
             
         },
         {
-            path:'/',
+            path:'/admin/',
             element: <AdminTemplate></AdminTemplate>,
             children:[
                 {
-                    path:'admin/user',
+                    path:'user',
                     element: <Dashboard></Dashboard>
                 },
                 {
-                    path:'admin/film',
+                    path:'film',
                     element: <AdFilms></AdFilms>,
 
                 },
                 {
-                    path:'admin/film/add',
+                    path:'film/add',
                     element: <AddNewFilm></AddNewFilm>,
 
                 },
                 {
-                    path:'admin/showtime',
+                    path:'film/edit/:id',
+                    element: <EditFilm></EditFilm>,
+
+                },
+                {
+                    path:'film/showtime/:id/:tenphim',
                     element: <ShowTime></ShowTime>
                 }
             ]

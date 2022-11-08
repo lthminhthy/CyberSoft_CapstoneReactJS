@@ -1,4 +1,4 @@
-import { SET_COMING, SET_LISTFILM, SET_SHOWING } from "../actions/types/QuanLyPhimType"
+import { SET_COMING, SET_LISTFILM, SET_SHOWING, SET_THONGTIN_PHIM } from "../actions/types/QuanLyPhimType"
 
 const stateDefault = {
     arrPhim: [
@@ -7,6 +7,7 @@ const stateDefault = {
     arrPhimDefault: [],
     dangChieu: true ,
     sapChieu: true,
+    thongTinPhim : {}
     
 }
 
@@ -27,6 +28,10 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
            state.sapChieu = !state.sapChieu
             state.arrPhim = state.arrPhimDefault.filter(film => film.sapChieu === state.sapChieu);
             
+            return {...state}
+        }
+        case SET_THONGTIN_PHIM: {
+            state.thongTinPhim = action.thongTinPhim;
             return {...state}
         }
         default: return {...state}

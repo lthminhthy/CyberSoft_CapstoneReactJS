@@ -129,7 +129,7 @@ const AddNewFilm = () => {
         size={componentSize}
 
       >
-        <h2 className='mb-5'>Thêm Phim</h2>
+        <h2 className='text-xl mb-5'>Thêm Phim</h2>
         <Form.Item label="Form Size" name="size">
           <Radio.Group>
             <Radio.Button value="small">Small</Radio.Button>
@@ -156,7 +156,7 @@ const AddNewFilm = () => {
           )}
         </Form.Item>
         <Form.Item label="Ngày Khởi Chiếu">
-          <DatePicker name='ngayKhoiChieu' format={"DD/MM/YYYY"} onChange={handleChangeDatePicker} />
+          <DatePicker name='ngayKhoiChieu' format="DD/MM/YYYY" onChange={handleChangeDatePicker} />
           {formik.errors.ngayKhoiChieu && formik.touched.ngayKhoiChieu && (
             <p className='text-red-500 mb-0 text-sm'>{formik.errors.ngayKhoiChieu}</p>
           )}

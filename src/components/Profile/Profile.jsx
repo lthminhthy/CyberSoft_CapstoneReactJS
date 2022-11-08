@@ -4,11 +4,16 @@ import { useNavigate } from 'react-router'
 import { ACCESS_TOKEN, USER_LOGIN } from '../../util/settings/config'
 
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import { SmileOutlined } from '@ant-design/icons';
+
+
 
 const Profile = () => {
     const { t, i18n } = useTranslation();
 
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
+    // console.log("userLogin: ", userLogin);
     const navigate = useNavigate()
     return (
         <main className="profile-page">
@@ -69,7 +74,9 @@ const Profile = () => {
                                 <div className="flex flex-wrap justify-center">
                                     <div className="w-full lg:w-9/12 px-4">
                                         <div className="mb-2 text-blueGray-400">
-                                            {userLogin.maLoaiNguoiDung}
+                                            {/* {userLogin.maLoaiNguoiDung} */}
+                                            {userLogin.maLoaiNguoiDung === 'QuanTri' ?  <NavLink className='text-xs sm:text-sm hover:text-white text-black hover:bg-black bg-white border-black border p-2 rounded-lg' to='/admin/film'>Đến trang Admin</NavLink> : ''}
+                                            {userLogin.maLoaiNguoiDung === 'KhachHang' ?  <SmileOutlined /> : ''}
                                         </div>
 
                                     </div>

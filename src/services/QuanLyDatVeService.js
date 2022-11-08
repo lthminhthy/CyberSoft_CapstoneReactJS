@@ -17,6 +17,9 @@ export class QuanLyDatVeSerice extends baseService{
         return this.post(`/api/QuanLyDatVe/DatVe`, thongTinDatVe);
 
     }
+    taoLichChieu = (thongTinLichChieu)  =>{
+        return this.post(`/api/QuanLyDatVe/TaoLichChieu`, thongTinLichChieu);
+    }
 
    
 }
