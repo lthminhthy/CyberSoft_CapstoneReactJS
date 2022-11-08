@@ -61,7 +61,7 @@ export default function HomeMenu(props) {
                             return <NavLink className="text-yellow-500 hover:text-black  md:px-2 md:py-1 rounded-md  font-semibold  " to={`/checkout/${lichChieu.maLichChieu}`} key={index}>
                               <span className='lg:text-lg sm:text-sm text-sm'>
                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
-                              </span>
+                              </span> 
                               
                             </NavLink>
                           })}
