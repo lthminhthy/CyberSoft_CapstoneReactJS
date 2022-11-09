@@ -75,8 +75,8 @@ const Profile = () => {
                                     <div className="w-full lg:w-9/12 px-4">
                                         <div className="mb-2 text-blueGray-400">
                                             {/* {userLogin.maLoaiNguoiDung} */}
-                                            {userLogin.maLoaiNguoiDung === 'QuanTri' ?  <NavLink className='text-xs sm:text-sm hover:text-white text-black hover:bg-black bg-white border-black border p-2 rounded-lg' to='/admin/film'>Đến trang Admin</NavLink> : ''}
-                                            {userLogin.maLoaiNguoiDung === 'KhachHang' ?  <SmileOutlined /> : ''}
+                                            {userLogin.maLoaiNguoiDung === 'QuanTri' ?  <NavLink className='text-xs sm:text-sm hover:text-white text-black hover:bg-black bg-white border-black border p-2 rounded-lg' to='/admin/film'>Đến trang Admin</NavLink> : <SmileOutlined />}
+                                            
                                         </div>
 
                                     </div>

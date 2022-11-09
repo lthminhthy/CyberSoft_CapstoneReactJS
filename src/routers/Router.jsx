@@ -3,7 +3,9 @@ import Profile from "../components/Profile/Profile"
 import AddNewFilm from "../pages/Admin/AdminFilms/AddNewFilm"
 import AdFilms from "../pages/Admin/AdminFilms/AdFilms"
 import EditFilm from "../pages/Admin/AdminFilms/EditFilm"
+import AddUser from "../pages/Admin/Dashboard/AddUser"
 import Dashboard from "../pages/Admin/Dashboard/Dashboard"
+import EditUser from "../pages/Admin/Dashboard/EditUser"
 import ShowTime from "../pages/Admin/ShowTime/ShowTime"
 
 import Checkout from "../pages/Checkout/Checkout"
@@ -85,8 +87,18 @@ export const Router = () => {
             element: <AdminTemplate></AdminTemplate>,
             children:[
                 {
-                    path:'user',
-                    element: <Dashboard></Dashboard>
+                    path:'user/',
+                    element: <Dashboard></Dashboard>,
+                   
+                    
+                },
+                {
+                    path:'user/adduser',
+                    element: <AddUser></AddUser>
+                },
+                {
+                    path:'user/edituser/taiKhoan=:tk',
+                    element: <EditUser></EditUser>
                 },
                 {
                     path:'film',

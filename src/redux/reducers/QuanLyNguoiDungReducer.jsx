@@ -1,6 +1,6 @@
 import { values } from "lodash"
 import { ACCESS_TOKEN, TOKEN, USER_LOGIN } from "../../util/settings/config";
-import { SET_DANGNHAP, SET_THONGTIN_USER } from "../actions/types/QuanLyNguoiDungType"
+import { SET_DANGNHAP, SET_LIST_USER, SET_MALOAI_USER, SET_THONGTIN_NGUOIDUNG, SET_THONGTIN_USER } from "../actions/types/QuanLyNguoiDungType"
 
 
 let user = {};
@@ -9,9 +9,13 @@ if(localStorage.getItem(USER_LOGIN)){
 }
 const stateDefault = {
     userLogin: user,
-    thongTinNguoiDung: {}
-
-
+    thongTinNguoiDung: {},
+    danhSachNguoiDung: [
+     
+    ],
+    danhSachNguoiDungDefault: [],
+    maLoaiND: [],
+    thongTinNguoiDungAdmin: {}
 }
 
 
@@ -30,6 +34,22 @@ export const QuanLyNguoiDungReducer = (state = stateDefault,action) =>  {
         }
         case SET_THONGTIN_USER: {
             state.thongTinNguoiDung = action.thongTinNguoiDung;
+            return {...state}
+
+        }
+        case SET_LIST_USER: {
+            state.danhSachNguoiDung = action.danhSachNguoiDung;
+            state.danhSachNguoiDungDefault = state.danhSachNguoiDung
+            return {...state}
+
+        }
+        case SET_MALOAI_USER: {
+            state.maLoaiND = action.maLoaiND;
+            return {...state}
+
+        }
+        case SET_THONGTIN_NGUOIDUNG: {
+            state.thongTinNguoiDungAdmin = action.thongTinNguoiDungAdmin;
             return {...state}
 
         }

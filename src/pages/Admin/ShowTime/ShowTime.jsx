@@ -13,13 +13,16 @@ import {
 } from 'antd';
 import { quanLyRapService } from '../../../services/QuanLyRapService';
 import { useFormik } from 'formik';
-import { useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 import * as Yup from "yup";
 import { quanLyDatVeService } from '../../../services/QuanLyDatVeService';
+import AdFilms from '../AdminFilms/AdFilms';
 
 
 const ShowTime = () => {
+  const navigate = useNavigate()
+  
   const { id, tenphim } = useParams()
   console.log("id: ", id);
   const formik = useFormik({
@@ -32,10 +35,7 @@ const ShowTime = () => {
       cumRap: ''
     },
     validationSchema: Yup.object({
-      // tenHeThongRap: Yup.string()
-      //   .required("Required!"),
-      // cumRap: Yup.string()
-      //   .required("Required!"),
+     
       ngayChieuGioChieu: Yup.string()
         .required("Required!"),
       giaVe: Yup.string()
@@ -47,6 +47,8 @@ const ShowTime = () => {
       try {
         let result = await quanLyDatVeService.taoLichChieu(values)
         alert(result.data.content)
+        
+        
       } catch (error) {
         console.log("error: ", error.response?.data);
 

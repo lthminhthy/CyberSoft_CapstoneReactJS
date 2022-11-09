@@ -75,7 +75,8 @@ const Register = () => {
         alert("Bạn đã đăng ký thành công")
         navigate('/login')
       } catch (error) {
-        console.log("errorcall: ", error.response?.data);
+        console.log("errorcall: ", error.response?.data.content);
+        alert("Không thể đăng ký " + error.response?.data.content)
 
       }
       console.log("value: ", values);
@@ -83,11 +84,6 @@ const Register = () => {
     },
   });
   
- 
-  const onChangeInputNumber = (values) => {
-    console.log('soDT: ', values);
-    formik.setFieldValue('soDT', values)
-  };
 
   return (
     <Form style={{ padding: 60 }}

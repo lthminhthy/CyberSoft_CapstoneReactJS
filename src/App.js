@@ -1,13 +1,10 @@
-// import logo from './logo.svg';
-// import './App.css';
 
-
-import { createBrowserHistory } from 'history';
+import { Switch } from 'antd';
 import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import FallBackFazy from './assets/FallBackLazy/FallBackFazy';
 import Loadding from './components/Loading/Loadding';
-import Router from "./routers/Router"
+import MainTemplate from './templates/MainTemplate/MainTemplate';
 
 
 const RouterLazy = React.lazy(() => import('./routers/Router'))
@@ -20,6 +17,7 @@ function App() {
       <Loadding></Loadding>
       <Suspense fallback={<FallBackFazy></FallBackFazy>} >
         <RouterLazy></RouterLazy>
+        
       </Suspense>
 
     </BrowserRouter>
