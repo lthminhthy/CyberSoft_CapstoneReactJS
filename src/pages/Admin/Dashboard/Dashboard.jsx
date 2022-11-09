@@ -11,6 +11,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { EditOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
 import '../AdminFilms/AdminFilm.css'
 import { layDanhSachNguoiDungAction, xoaNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungAction';
+import { GROUPID } from '../../../util/settings/config';
 
 
 
@@ -31,7 +32,9 @@ const Dashboard = () => {
 
   const onSearch = (value) => {
     console.log("value: ", value);
+
     // call api laydanhsachphim
+    const maNhom = GROUPID
     dispatch(layDanhSachNguoiDungAction(value));
 
   };
