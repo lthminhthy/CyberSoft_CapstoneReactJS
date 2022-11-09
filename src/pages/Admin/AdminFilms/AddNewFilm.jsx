@@ -17,6 +17,7 @@ import * as Yup from "yup";
 import { useDispatch } from 'react-redux';
 import { themPhimUploadHinhAction } from '../../../redux/actions/QuanLyPhimAction';
 import { GROUPID } from '../../../util/settings/config';
+import { useNavigate } from 'react-router';
 
 
 
@@ -24,6 +25,7 @@ const AddNewFilm = () => {
   const [componentSize, setComponentSize] = useState('default');
   const [imgSrc, setImgSrc] = useState('');
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   // formik
   const formik = useFormik({
     initialValues: {
@@ -69,7 +71,7 @@ const AddNewFilm = () => {
       }
 
       // call api gui formData ve backend
-      dispatch(themPhimUploadHinhAction(formData))
+      dispatch(themPhimUploadHinhAction(formData, navigate))
 
     } 
   });
@@ -185,7 +187,7 @@ const AddNewFilm = () => {
         <div className='text-center'>
           <Form.Item label='' >
             <button type="submit" className='bg-blue-600 p-2 text-white rounded-lg hover:bg-blue-900 hover:text-white border hover:border-blue-600'>Thêm Phim</button>
-          </Form.Item>
+          </Form.Item>     
         </div>
 
       </Form>

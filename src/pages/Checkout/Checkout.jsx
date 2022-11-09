@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 import { datVeAction, layChiTietPhongVeAction } from '../../redux/actions/QuanLyDatVeAction'
-import { QuanLyNguoiDungReducer } from '../../redux/reducers/QuanLyNguoiDungReducer'
 import style from './Checkout.module.css'
 import './Checkout.css'
 import { CloseOutlined, UserOutlined } from '@ant-design/icons'
@@ -10,7 +9,7 @@ import { CHANGE_TAB_ACTIVE, CHUYEN_TAB, DAT_VE } from '../../redux/actions/types
 import _ from 'lodash'
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe'
 import { Tabs } from 'antd'
-import { layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction'
+import { layThongTinTaiKhoanAction } from '../../redux/actions/QuanLyNguoiDungAction'
 import moment from 'moment'
 
 import { useTranslation } from 'react-i18next';
@@ -39,6 +38,7 @@ export const Checkout = () => {
     return danhSachGhe.map((ghe, index) => {
       let classGheVip = ghe.loaiGhe === 'Vip' ? 'gheVip' : '';
       let classGheDaDat = ghe.daDat === true ? 'gheDaDat' : '';
+      let sttGhe = ghe.stt ? 'sttGhe' : '';
 
       let classGheDangDat = '';
       let indexGheDD = danhSachGheDangDat.findIndex(gheDD => gheDD.maGhe === ghe.maGhe);
@@ -72,32 +72,32 @@ export const Checkout = () => {
   return (
     <div className='min-h-screen'>
 
-      <div className=' container '>
+      <div className=' xl:container '>
 
-        <div className='grid grid-cols-12 '>
+        <div className='lg:grid lg:grid-cols-12 '>
           {/* man hinh chon ghe */}
-          <div className='col-span-8 lg:mr-20 '>
+          <div className='lg:col-span-8 lg:mr-20 mb-20 '>
             <div className='flex flex-col items-center mt-5'>
               <div className={`${style['trapezium']}`}></div>
 
             </div>
-            <h3 className='text-center text-black'>{t('screen')}</h3>
+            <h3 className='text-center text-black mb-10'>{t('screen')}</h3>
 
-            <div className='text-center lg:mt-10'>
+            <div className='text-center lg:mt-10 '>
               {renderSeat()}
             </div>
-            <div className='mt-10 flex justify-center'>
-              <table className='divide-y divide-slate-600 w-2/3'>
-                <thead>
-                  <tr>
-                    <th>{t('Standard')}</th>
-                    <th>{t('VIP seat')}</th>
-                    <th>{t('Unavailable')}</th>
-                    <th>{t('Selected')}</th>
-                    <th>{t('Your seat')}</th>
+            <div className='mt-10 flex gap-3 justify-center'>
+              <table className='divide-y divide-slate-600 w-2/3  '>
+                <thead className='mx-2 sm:mx-0'>
+                  <tr >
+                    <th className='text-[10px] sm:text-base c'>{t('Standard')}</th>
+                    <th className='text-[10px] sm:text-base'>{t('VIP')}</th>
+                    <th className='text-[10px] sm:text-base'>{t('Unavailable')}</th>
+                    <th className='text-[10px] sm:text-base'>{t('Selected')}</th>
+                    <th className='text-[10px] sm:text-base'>{t('Your seat')}</th>
                   </tr>
                 </thead>
-                <tbody className=' divide-y divide-slate-600 '>
+                <tbody className=' divide-y divide-slate-600 mx-2 sm:mx-0'>
                   <tr>
                     <td className=' text-center'>
                       <button className='ghe'></button>
@@ -127,13 +127,12 @@ export const Checkout = () => {
 
 
           {/* thong tin dat ve */}
-          <div className='col-span-4 pr-2'>
-            {/* <h3 className='text-center text-yellow-400'>so tien</h3> */}
-            {/* <hr /> */}
+          <div className='lg:col-span-4 p-2 sm:container lg:mx-0 bg-yellow-700 bg-opacity-20 lg:bg-white lg:p-5'>
+
             <div className='my-5'>
-              <h3 className='text-xl'>{thongTinPhim.tenPhim}</h3>
+              <h3 className='sm:text-xl text-sm'>{thongTinPhim.tenPhim}</h3>
               <p className='text-sm'>{thongTinPhim.tenCumRap}</p>
-              <p className='text-base'>{thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} - {thongTinPhim.tenRap}</p>
+              <p className='sm:text-base text-xs'>{thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} - {thongTinPhim.tenRap}</p>
 
             </div>
 
@@ -141,10 +140,10 @@ export const Checkout = () => {
             <div className='grid grid-cols-3 my-5'>
               <div className='col-span-2'>
                 <div className='flex'>
-                  <span className='mr-2'>{t('Seat')}: </span>
+                  <span className='mr-2 text-sm '>{t('Seat')}: </span>
                   <div>
                     {_.sortBy(danhSachGheDangDat, ['stt']).map((gheDD, index) => {
-                      return <span key={index} className="bg-yellow-300 text-lg px-2 py-1 ">{gheDD.stt}
+                      return <span key={index} className="bg-yellow-300 sm:text-lg text-xs sm:px-2 px-1 py-1 ">{gheDD.stt}
                         {(index + 1) % 5 === 0 ? <br /> : ''}
                       </span>
 
@@ -158,21 +157,24 @@ export const Checkout = () => {
             </div>
             <hr />
             <div className='my-5'>
-              <i className='mr-1'>Email:</i>
+              <i className='mr-1 text-sm'>Email:</i>
+              <span className='text-sm'>
+                {userLogin.email}
+              </span>
 
-              {userLogin.email}
             </div>
             <hr />
             <div className='my-5'>
-              <i className='mr-1'>{t('Phone')}:</i>
+              <i className='mr-1 text-sm'>{t('Phone')}:</i>
+              <span className='text-sm'>{userLogin.soDT}</span>
 
-              {userLogin.soDT}
+              
             </div>
             <hr />
             <div className='grid grid-cols-3 my-5'>
               <div className='col-span-2'>
                 <div className='flex'>
-                  <span className='mr-2 text-black text-base'>{t('SUB TOTAL')}: </span>
+                  <span className='mr-2 text-black sm:text-base text-sm'>{t('SUB TOTAL')}: </span>
                   <div>
                   </div>
 
@@ -180,18 +182,18 @@ export const Checkout = () => {
 
               </div>
               <div className='col-span-1 text-right'>
-                <span className='text-lg font-semibold text-red-500 '>
+                <span className=' font-semibold text-red-500 sm:text-base text-sm '>
                   {danhSachGheDangDat.reduce((tongTien, ghe, index) => {
                     return tongTien += ghe.giaVe;
                   }, 0).toLocaleString()}
                 </span>
-                <span className='ml-1'>VND</span>
+                <span className='ml-1 sm:text-base text-sm'>VND</span>
               </div>
             </div>
 
 
             <div className='my-5 text-center '>
-              <div className=' py-1 px-2 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-lg cursor-pointer' onClick={() => {
+              <div className='w-full py-1 px-2 bg-yellow-400 hover:bg-yellow-500 font-semibold rounded-lg cursor-pointer sm:text-base text-sm' onClick={() => {
                 const thongTinDatVe = new ThongTinDatVe();
                 // console.log("thongTinDatVe: ", thongTinDatVe);
                 thongTinDatVe.maLichChieu = param.id;
@@ -206,6 +208,8 @@ export const Checkout = () => {
 
 
           </div>
+
+
         </div>
 
       </div>
@@ -216,10 +220,7 @@ export const Checkout = () => {
 
 const { TabPane } = Tabs;
 
-function callback(key) {
-  console.log("key: ", key);
 
-}
 export default function (props) {
   const { t, i18n } = useTranslation();
 
@@ -235,15 +236,15 @@ export default function (props) {
     }}>
       <div className='flex justify-center items-center'>
         <div className="overflow-hidden relative w-8 h-8 bg-black rounded-full dark:bg-gray-600">
-        <svg className="absolute -left-1 w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
-        
+          <svg className="absolute -left-1 w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
+
         </div>
-        <span className="ml-3 font-medium text-gray-600 dark:text-gray-300">{userLogin.taiKhoan}</span>
+        <span className="ml-3  font-medium text-gray-600 dark:text-gray-300 display sm:block hidden">{userLogin.taiKhoan}</span>
       </div>
     </button> : ''}
   </Fragment>
 
-  return <div className=''>
+  return <Fragment className=''>
 
     <button className='flex hover:bg-yellow-300 bg-yellow-200 bg-opacity-50 previous lg:p-1 mt-5 ml-5 rounded-md' onClick={() => {
       navigate(-1)
@@ -254,7 +255,7 @@ export default function (props) {
 
     </button>
 
-    <div className='p-5'>
+    <div className='md:p-5 p-0'>
       <Tabs tabBarExtraContent={operations} defaultActiveKey='1' activeKey={tabActive} onChange={(key) => {
         dispatch({
           type: CHANGE_TAB_ACTIVE,
@@ -276,7 +277,7 @@ export default function (props) {
       </Tabs>
     </div>
 
-  </div>
+  </Fragment>
 
 };
 
@@ -286,10 +287,9 @@ function KetQuaDatVe(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch()
   const { thongTinNguoiDung } = useSelector(state => state.QuanLyNguoiDungReducer)
-  const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
 
   useEffect(() => {
-    const action = layThongTinNguoiDungAction()
+    const action = layThongTinTaiKhoanAction()
     dispatch(action)
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -319,10 +319,6 @@ function KetQuaDatVe(props) {
         </div>
       </div>
 
-
-
-
-
     })
   }
 
@@ -334,8 +330,6 @@ function KetQuaDatVe(props) {
         </div>
         <div className="flex flex-wrap -m-4 ">
           {renderTicketHistory()}
-
-
 
         </div>
       </div>

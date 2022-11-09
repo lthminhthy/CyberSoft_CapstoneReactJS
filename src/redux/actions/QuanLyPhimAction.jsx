@@ -8,8 +8,6 @@ export const layDanhSachPhimAction = (tenPhim='') => {
         try {
             const result = await quanLyPhimService.layDanhSachPhim(tenPhim)
 
-
-
             dispatch({
                 type: SET_LISTFILM,
                 arrPhim: result.data.content
@@ -20,11 +18,13 @@ export const layDanhSachPhimAction = (tenPhim='') => {
         }
     };
 }
-export const themPhimUploadHinhAction = (formData) => {
+export const themPhimUploadHinhAction = (formData ,navigate) => {
     return async (dispatch) => {
         try {
             let result = await quanLyPhimService.themPhimUploadHinh(formData);
             alert('Thêm phim thành công!')
+            dispatch(layDanhSachPhimAction());
+            navigate('/admin/film')
 
 
 

@@ -134,7 +134,7 @@ const AdFilms = () => {
     <div className='container'>
       <h2 className='lg:text-lg text-base mb-5'>Quản Lý Phim</h2>
       <div className='flex justify-between items-center'>
-        <Space direction="vertical">
+        <Space direction="vertical" className='w-screen'>
         
           <Search placeholder="Nhập tên phim cần tìm" onSearch={onSearch} enterButton allowClear  size="large"/>
         </Space>

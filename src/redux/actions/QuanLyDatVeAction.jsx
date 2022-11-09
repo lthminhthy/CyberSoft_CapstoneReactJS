@@ -1,7 +1,6 @@
 import { quanLyDatVeService } from "../../services/QuanLyDatVeService";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
-import { SET_HIDE_LOADING, SET_LOADING } from "./types/LoadingType";
 import { CHUYEN_TAB, DAT_VE_HOAN_TAT, SET_PHONG_VE } from "./types/QuanLyDatVeType";
 
 export const layChiTietPhongVeAction = (maLichChieu) => {
@@ -38,7 +37,8 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) => {
 
 
             // tắt loading
-             await dispatch(hideLoadingAction)
+            await dispatch(hideLoadingAction)
+            alert('Đặt vé thành công!')
 
             await dispatch({ type: CHUYEN_TAB })
 

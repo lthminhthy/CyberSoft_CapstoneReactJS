@@ -41,9 +41,9 @@ const EditFilm = () => {
         enableReinitialize:true,
         initialValues: {
             maPhim: thongTinPhim.maPhim,
-            tenPhim: thongTinPhim?.tenPhim,
-            trailer: thongTinPhim?.trailer,
-            moTa: thongTinPhim?.moTa,
+            tenPhim: thongTinPhim.tenPhim,
+            trailer: thongTinPhim.trailer,
+            moTa: thongTinPhim.moTa,
             ngayKhoiChieu: thongTinPhim.ngayKhoiChieu,
             dangChieu: thongTinPhim.dangChieu,
             sapChieu: thongTinPhim.sapChieu,
@@ -147,7 +147,7 @@ const EditFilm = () => {
                 size={componentSize}
 
             >
-                <h2 className='text-xl mb-5'>Thêm Phim</h2>
+                <h2 className='text-xl mb-5'>Cập Nhật Phim</h2>
                 <Form.Item label="Form Size" name="size">
                     <Radio.Group>
                         <Radio.Button value="small">Small</Radio.Button>

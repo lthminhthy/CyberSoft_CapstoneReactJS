@@ -36,3 +36,50 @@
 
 
 }
+
+@media only screen and (min-width: 350px) {
+    .ghe {
+        width: 20px;
+        height:20px;
+        margin: 1px;
+        border-radius: 3px;
+        font-size:10px;
+        padding:1px
+    }
+  }
+@media only screen and (min-width: 472px) {
+    .ghe {
+        width: 25px;
+        height:25px;
+        margin: 1px;
+        border-radius: 3px;
+    }
+  }
+@media only screen and (min-width: 640px) {
+    .ghe {
+        width: 30px;
+        height:30px;
+        margin: 3px;
+    }
+  }
+@media only screen and (min-width: 700px) {
+    .ghe {
+        width: 35px;
+        height:35px;
+        margin: 3px;
+    }
+  }
+@media only screen and (min-width: 1024px) {
+    .ghe {
+        width: 25px;
+        height:25px;
+        margin: 3px;
+    }
+  }
+@media only screen and (min-width: 1280px) {
+    .ghe {
+        width: 30px;
+        height:30px;
+        margin: 5px;
+    }
+  }

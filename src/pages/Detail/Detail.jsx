@@ -40,24 +40,24 @@ const Detail = (props) => {
         <div className="App" style={{ backgroundImage: ` url(https://www.bhdstar.vn/wp-content/themes/bhd/assets/images/movie-details-bg.jpg)`, display: 'flex' }}>
 
             <div className={`${glassmorphism['box']}`}>
-                <div className='lg:pt-32 sm:pt-32 pt-28 '>
+                <div className='sm:pt-32 pt-28 '>
 
                     <div className='grid grid-cols-12'>
-                        <div className='text-white col-span-8 col-start-3'>
+                        <div className='text-white sm:col-span-8 col-span-10 sm:col-start-3 col-start-2'>
                             <div className='grid grid-cols-3'>
                                 <div className='max-w-sm col-span-1 col-start-1'>
                                     <img className='rounded-lg lg:h-full lg:w-full' src={phimDetail.hinhAnh} alt="." />
                                 </div>
 
-                                <div className='ml-8 col-span-2 col-start-2'>
-                                    <h1 className='font-semibold text-white lg:text-4xl md:text-2xl sm:text-base text-sm'>{phimDetail.tenPhim}</h1>
+                                <div className='sm:ml-8 ml-3 col-span-2 col-start-2'>
+                                    <h1 className='font-semibold text-white text-xs sm:text-lg'>{phimDetail.tenPhim}</h1>
                                     <p>{t('Release date')}: {moment(phimDetail.ngayKhoiChieu).format('DD-MM-YYYY')}</p>
-                                    <p className='mt-10'>{phimDetail.moTa}</p>
+                                    <p className='mt-10 text-xs sm:text-lg'>{phimDetail.moTa}</p>
                                     <div className='flex items-center	'>
-                                        <div>{t('Evaluate')}: </div>
-                                        <div className="pacss-wrapper text-black">
+                                        <div className='text-xs sm:text-lg'>{t('Evaluate')}: </div>
+                                        <div className="text-xs sm:text-lg pacss-wrapper text-black">
                                             <span className="pacss-foreground">
-                                                <span className="pacss-number">{phimDetail.danhGia}</span>
+                                                <span className="pacss-number text-xs sm:text-lg">{phimDetail.danhGia}</span>
                                             </span>
                                             <span className="pacss" />
                                         </div>
@@ -81,21 +81,21 @@ const Detail = (props) => {
                                                 <Tabs tabPosition={'left'}>
                                                     {phimDetail.heThongRapChieu?.map((htr, index) => {
 
-                                                        return <TabPane tab={<div className='text-black font-semibold hover:text-yellow-500 justify-center	items-center'><img alt={htr.tenHeThongRap} width={50} height={50} src={htr.logo}></img>{htr.tenHeThongRap}</div>} key={index}   >
+                                                        return <TabPane tab={<div className='text-black font-semibold hover:text-yellow-500 justify-center	items-center'><img className='w-10 sm:w-16' alt={htr.tenHeThongRap}  src={htr.logo}></img>{htr.tenHeThongRap}</div>} key={index}   >
                                                             {htr.cumRapChieu?.map((cumRap, index) => {
                                                                 return <div className='m-0' key={index}>
                                                                     <div className='my-4 flex flex-row justify-start	items-center'>
-                                                                        <img width={50} src={htr.logo} alt={htr.tenHeThongRap} />
+                                                                        <img className='w-0 sm:w-16'  src={htr.logo} alt={htr.tenHeThongRap} />
                                                                         <div className='ml-3 text-base'>
                                                                             <p className='mb-1'>{cumRap.tenCumRap}</p>
-                                                                            <p className='text-xs text-yellow-300'>{cumRap.diaChi}</p>
+                                                                            <p className='text-xs text-black'>{cumRap.diaChi}</p>
 
 
                                                                         </div>
                                                                     </div>
-                                                                    <div className='grid grid-cols-8 gap-10 mb-3'>
+                                                                    <div className='grid sm:grid-cols-8 grid-cols-3 sm:gap-10 gap-5 mb-3'>
                                                                         {cumRap.lichChieuPhim?.slice(0, 10).map((lichChieu, index) => {
-                                                                            return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className=' bg-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md text-black font-semibold'>
+                                                                            return <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className=' text-yellow-300 hover:bg-yellow-400 hover:text-black px-2 py-1 rounded-md  font-semibold text-xs sm:text-base'>
                                                                                 {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                                                                             </NavLink>
                                                                         })}
@@ -114,8 +114,8 @@ const Detail = (props) => {
                                             </div>
                                         </div>
                                     </TabPane>
-                                    <TabPane tab={t('DETAILS')} key="2">{t('DETAILS')}</TabPane>
-                                    <TabPane tab={t('EVALUATE')} key="3">{t('EVALUATE')}</TabPane>
+                                    <TabPane className='text-xs sm:text-lg' tab={t('DETAILS')} key="2">{t('DETAILS')}</TabPane>
+                                    <TabPane className='text-xs sm:text-lg' tab={t('EVALUATE')} key="3">{t('EVALUATE')}</TabPane>
 
                                 </Tabs>
                             </div>

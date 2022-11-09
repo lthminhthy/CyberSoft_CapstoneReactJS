@@ -2,7 +2,8 @@ import {
     UserOutlined,
     FolderOutlined,
     FieldTimeOutlined,
-    FileAddOutlined
+    FileAddOutlined,
+    UserAddOutlined
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import React, { useEffect, useState } from 'react';
@@ -62,19 +63,24 @@ const App = () => {
                 <NavLink to='/'>
                     <img className='p-3 w-auto' src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="logo" />
                 </NavLink>
-                
+
                 <Menu theme="dark" mode="inline" >
-                    <Menu.Item key='1' icon={<UserOutlined />}>
-                        <NavLink to='/admin/user'>User</NavLink>
-                    </Menu.Item>
-                    <SubMenu key='sub1' icon={<FolderOutlined />} title="Films">
-                        <Menu.Item key='10' icon={<FolderOutlined /> }>
-                            <NavLink to='/admin/film'>Films</NavLink>
-                            
+                    <SubMenu key='sub11' icon={<FolderOutlined />} title="User">
+                        <Menu.Item key='122' icon={<UserOutlined />}>
+                            <NavLink to='/admin/user'>User</NavLink>
                         </Menu.Item>
-                        <Menu.Item key='11' icon={<FileAddOutlined />}>
-                        <NavLink to='/admin/film/add'>Add Film</NavLink>
-                            
+                        <Menu.Item key='12' icon={<UserAddOutlined />}>
+                            <NavLink to='/admin/user/adduser'>Add User</NavLink>
+                        </Menu.Item>
+                    </SubMenu>
+                    <SubMenu key='sub12' icon={<FolderOutlined />} title="Films">
+                        <Menu.Item key='132' icon={<FolderOutlined />}>
+                            <NavLink to='/admin/film'>Films</NavLink>
+
+                        </Menu.Item>
+                        <Menu.Item key='14' icon={<FileAddOutlined />}>
+                            <NavLink to='/admin/film/add'>Add Film</NavLink>
+
                         </Menu.Item>
                     </SubMenu>
 
@@ -111,14 +117,7 @@ const App = () => {
                         margin: '0 16px',
                     }}
                 >
-                    {/* <Breadcrumb
-                        style={{
-                            margin: '16px 0',
-                        }}
-                    >
-                        <Breadcrumb.Item>User</Breadcrumb.Item>
-                        
-                    </Breadcrumb> */}
+                  
                     <div
                         className="site-layout-background"
                         style={{

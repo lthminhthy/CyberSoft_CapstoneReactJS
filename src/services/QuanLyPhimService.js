@@ -34,3 +34,4 @@ export class QuanLyPhimService extends baseService{
 }
 
 export const quanLyPhimService = new QuanLyPhimService();
+
