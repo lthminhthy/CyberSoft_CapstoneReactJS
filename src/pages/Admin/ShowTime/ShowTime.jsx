@@ -42,22 +42,22 @@ const ShowTime = () => {
         .required("Required!"),
 
     }),
-    onSubmit: async (values) => {
-      console.log("valuesubmit: ", values);
-      try {
-        let result = await quanLyDatVeService.taoLichChieu(values)
-        alert(result.data.content)
+     onSubmit: (values) => {
+            console.log("valuesubmit: ", values);
+             quanLyDatVeService.taoLichChieu(values).then((result) => {
+              alert(result.data.content)
+            }).catch((error) => {
+              console.log("error: ", error.response?.data);
         
-        
-      } catch (error) {
-        console.log("error: ", error.response?.data);
+            })
+            navigate('/admin/film')
+           
+        }
+    });
 
-      }
 
 
-
-    }
-  })
+    
 
   const [state, setState] = useState({
 
@@ -66,17 +66,22 @@ const ShowTime = () => {
   })
   console.log("state: ", state.heThongRapChieu);
 
-  useEffect(async () => {
-    try {
-      let result = await quanLyRapService.layThongTinHeThongRap();
-      setState({
-        ...state,
-        heThongRapChieu: result.data.content
-      })
-    } catch (error) {
-      console.log("error: ", error);
+  useEffect( () => {
+    quanLyRapService.layThongTinHeThongRap().then((result) => {
+            console.log("result: ", result);
+            setState({
+              ...state,
+              heThongRapChieu: result.data.content
+            })
+          }).catch((error) => {
+            console.log("error: ", error.response?.data);
+      
+          })
 
-    }
+
+
+
+
   }, [])
 
 

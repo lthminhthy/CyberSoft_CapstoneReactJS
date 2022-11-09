@@ -37,22 +37,20 @@ const EditUser = () => {
     const { maLoaiND } = useSelector(state => state.QuanLyNguoiDungReducer)
 
     
-    useEffect(async () => {
+    useEffect( () => {
         dispatch(layThongTinNguoiDungAction(tk, navigate))
-        try {
-            let result = await quanLyNguoiDungService.layDanhSachLoaiNguoiDung()
+        quanLyNguoiDungService.layDanhSachLoaiNguoiDung().then((result) => {
+            console.log("result: ", result);
             dispatch({
                 type: SET_MALOAI_USER,
                 maLoaiND: result.data.content
-            })
-
-
-        }
-        catch (error) {
+                })
+          }).catch((error) => {
             console.log("error: ", error.response?.data);
+      
+          })
 
-        }
-
+        
     }, [])
 
 
@@ -85,17 +83,18 @@ const EditUser = () => {
                 .required("Required!"),
         }),
 
-        onSubmit: async (values) => {
+        onSubmit: (values) => {
             console.log("valuesubmit: ", values);
-            // call api gui formData ve backend
-            try{
-                let result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(values);
-                alert('Cập nhật thành công!')
-            }catch(error){
-                console.log("error: ", error);
-
-            }
+             quanLyNguoiDungService.capNhatThongTinNguoiDung(values).then((result) => {
+                // alert('Cập nhật thành công!')
             navigate('/admin/user')
+
+              }).catch((error) => {
+                console.log("error: ", error.response?.data);
+          
+              })
+           
+            
 
         }
     });
