@@ -61,13 +61,13 @@ const Header = () => {
         if (_.isEmpty(userLogin)) {
             return <Fragment>
                 <NavLink
-                    to="/dangnhap"
+                    to="/login"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-3 rounded-md text-sm font-medium"
                 >
                     Đăng Nhập
                 </NavLink>
                 <NavLink
-                    to="/dangky"
+                    to="/register"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-3 rounded-md text-sm font-medium"
                 >
                     Đăng Ký
@@ -208,7 +208,7 @@ const Header = () => {
 
                             <NavLink
                                 to="/home"
-                                className="text-white hover:text-yellow-400   block px-3 py-3 rounded-md text-sm font-medium"
+                                className="text-white hover:text-yellow-400 block px-3 py-3 rounded-md text-sm font-medium"
                             >
                                 Home
                             </NavLink>
@@ -227,14 +227,7 @@ const Header = () => {
                             {renderLoginResponsive()}
                             <div className="md:hidden text-right my-5 py-2  ">
                                 <Space direction="vertical" >
-                                    {/* <Search
-                                        placeholder="Nhập khóa học muốn tìm"
-                                        allowClear
-                                        onSearch={onSearch}
-                                        style={{
-                                            width: 304,
-                                        }}
-                                    /> */}
+                                 
                                 </Space>
                             </div>
 
