@@ -34,11 +34,11 @@ const Home = () => {
     <div>
       <HomeCarousel></HomeCarousel>
       <section className="text-gray-600 body-font">
-        <div className=" px-10 py-10 md:px-20 md:py-10 lg:px-36 lg:py-10 mx-auto">
+        <div className=" px-10 py-10 md:px-20 md:py-10 lg:px-36 lg:py-10 mx-auto my-5">
          {arrPhim.length > 0 && <MultipleRow arrPhim={arrPhim}></MultipleRow>}
         </div>
       </section>
-      <div className='lg:mx-36 lg:my-16 mx-5 my-5'>
+      <div className='lg:mx-36 lg:my-16 mx-5 my-5 hidden sm:block'>
         <HomeMenu heThongRap={heThongRap}></HomeMenu>
         
 

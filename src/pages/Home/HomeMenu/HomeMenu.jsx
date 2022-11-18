@@ -29,7 +29,7 @@ export default function HomeMenu(props) {
 
   const renderHeThongRap = () => {
     return heThongRapChieu.map((heThongRapChieu, index) => {
-      return <TabPane tab={<img src={heThongRapChieu.logo} className="rounded-full lg:w-12 sm:w-9 w-6"  ></img>} key={index} >
+      return <TabPane  tab={<img src={heThongRapChieu.logo} className="rounded-full lg:w-12 sm:w-9 w-6 "  ></img>} key={index} >
 
         <Tabs tabPosition={tabPosition}>
           {heThongRapChieu.lstCumRap?.slice(1,5).map((cumRap, index) => {
